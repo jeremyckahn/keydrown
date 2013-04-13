@@ -1,6 +1,6 @@
 # Keydrown
 
-## A JavaScript keydown handler for web apps
+## A JavaScript key state handler for web apps
 
 When building games or any application that requires quick reactions from the
 user, a system to track key states is needed.  You might say "Silly developer!
