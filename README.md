@@ -93,6 +93,8 @@ kd.B.up(function () {
 });
 ````
 
+-------------------------------------------------------------------------------
+
 ````javascript
 kd.Key.prototype.unbindDown = function ()
 ````
@@ -115,6 +117,8 @@ kd.B.unbindDown();
 ````
 
 Unbinds the function handler that was bound with `kd.Key#up`.
+
+-------------------------------------------------------------------------------
 
 ### Helper methods
 
