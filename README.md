@@ -55,22 +55,31 @@ following API, and by extension, so do the KEY Objects:
 
 ````javascript
 /**
- * @param {function} handler
+ * @param {function=} opt_handler
  */
-kd.Key.prototype.down = function (handler)
+kd.Key.prototype.down = function (opt_handler)
 ````
 
-`handler` fires for every tick where there is a key is held down.  There is no
-early delay, as described in the ASCII graph above.
+`opt_handler` fires for every tick where there is a key is held down.  There is
+no early delay, as described in the ASCII graph above.  Calling this method for
+a key again will overwrite the previous keyhandler - only one handler function
+is allowed per key.
+
+If `opt_handler` is omitted, this function invokes whatever handler function
+was previously bound with `kd.Key#down`.
 
 ````javascript
 /**
- * @param {function} handler
+ * @param {function=} opt_handler
  */
-kd.Key.prototype.up = function (handler)
+kd.Key.prototype.up = function (opt_handler)
 ````
 
-`handler` fires when the key is released by the user.
+`opt_handler` fires when the key is released by the user.  As with
+`kd.Key#down`, only one handler function is allowed.
+
+If `opt_handler` is omitted, this function invokes whatever handler function
+was previously bound with `kd.Key#up`.
 
 ### Example
 
@@ -84,11 +93,33 @@ kd.B.up(function () {
 });
 ````
 
+````javascript
+kd.Key.prototype.unbindDown = function ()
+````
+
+Unbinds the function handler that was bound with `kd.Key#down`.
+
+````javascript
+kd.Key.prototype.unbindUp = function ()
+````
+
+### Example
+
+````javascript
+kd.B.down(function () {
+  console.log('The "B" key is being held down!');
+});
+
+// Now pressing the "B" key won't do anything
+kd.B.unbindDown();
+````
+
+Unbinds the function handler that was bound with `kd.Key#up`.
 
 ### Helper methods
 
 The `kd` Object has helper methods and properties associated with it, and they
-are represented by camel case property names.
+are represented by camelCase property names.
 
 ````javascript
 kd.tick = function ()
