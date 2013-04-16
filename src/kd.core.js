@@ -1,4 +1,11 @@
+'use strict';
+
 var kd = {};
+
+/**
+ * @type Array.<string>
+ */
+var keysDown = [];
 
 
 kd.tick = function () {
