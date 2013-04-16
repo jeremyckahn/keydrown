@@ -3,6 +3,7 @@ var kd = (function () {
   'use strict';
 
   var kd = {};
+  kd.Key = Key;
 
   /**
    * @type Array.<string>

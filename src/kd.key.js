@@ -11,7 +11,6 @@ var Key = (function () {
   function Key (keyName, keyCode) {
 
   }
-  kd.Key = Key;
 
 
   /**
