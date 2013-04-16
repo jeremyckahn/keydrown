@@ -1,6 +1,27 @@
 /*! Keydrown - v0.0.1 - 2013-04-16 - http://jeremyckahn.github.com/keydrown */
 ;(function (root) {
 
+var util = (function () {
+
+  var util = {};
+
+  /**
+   * @param {Object} obj The Object to iterate through.
+   * @param {function} iterator The function to call for each property.
+   */
+  util.forEach = function (obj, iterator) {
+    var prop;
+    for (prop in obj) {
+      if (obj.hasOwnProperty[prop]) {
+        iterator(obj[prop]);
+      }
+    }
+  };
+
+  return util;
+
+}());
+
 /**
  * Lookup table of keys to keyCodes.
  * @type {Object.<number>}
@@ -52,7 +73,6 @@ var Key = (function () {
   function Key (keyName, keyCode) {
 
   }
-  kd.Key = Key;
 
 
   /**
@@ -101,6 +121,7 @@ var kd = (function () {
   'use strict';
 
   var kd = {};
+  kd.Key = Key;
 
   /**
    * @type Array.<string>

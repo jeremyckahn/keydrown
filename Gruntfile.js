@@ -46,6 +46,7 @@ module.exports = function(grunt) {
       standard: {
         src: [
           'src/kd.intro.js',
+          'src/kd.util.js',
           'src/kd.map.js',
           'src/kd.key.js',
           'src/kd.core.js',
