@@ -1,0 +1,16 @@
+{
+  "name": "Keydrown",
+  "version": "0.0.1",
+  "homepage": "http://jeremyckahn.github.com/keydrown",
+  "author": "Jeremy Kahn <jeremyckahn@gmail.com>",
+  "description": "A JavaScript key state handler for web apps",
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-qunit": "~0.1.1",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-uglify": "~0.1.2",
+    "grunt-dox": "~0.4.1"
+  },
+  "license": "MIT"
+}
