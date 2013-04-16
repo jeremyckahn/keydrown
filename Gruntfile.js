@@ -49,10 +49,11 @@ module.exports = function(grunt) {
           'src/kd.map.js',
           'src/kd.key.js',
           'src/kd.core.js',
+          'src/kd.init.js',
           'src/kd.outro.js'
         ],
         dest: 'dist/keydrown.js'
-      },
+      }
     },
     dox: {
       options: {
@@ -70,6 +71,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint', 'qunit']);
   grunt.registerTask('build',
-    ['concat:standard', 'uglify:standard', 'dox']);
+    ['concat:standard', 'uglify:standard' /*, 'dox'*/]);
 
 };
