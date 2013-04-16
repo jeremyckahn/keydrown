@@ -34,6 +34,12 @@ var kd = (function () {
   };
 
 
+  // Initialize the KEY Objects
+  util.forEach(KEY_MAP, function (keyCode, keyName) {
+    kd[keyName] = new Key(keyName, keyCode);
+  });
+
+
   return kd;
 
 }());

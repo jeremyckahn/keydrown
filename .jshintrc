@@ -2,9 +2,10 @@
   "globals": {
     "__note": "These variables aren't actually exposed as globals.  They are defined in the modules.",
     "define": true,
-    "root": true,
+    "util": true,
     "kd": true,
     "Key": true
+    "KEY_MAP": true
   },
 
   "asi": false,

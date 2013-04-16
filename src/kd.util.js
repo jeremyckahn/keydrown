@@ -4,13 +4,14 @@ var util = (function () {
 
   /**
    * @param {Object} obj The Object to iterate through.
-   * @param {function} iterator The function to call for each property.
+   * @param {function(Object, string)} iterator The function to call for each
+   * property.
    */
   util.forEach = function (obj, iterator) {
     var prop;
     for (prop in obj) {
-      if (obj.hasOwnProperty[prop]) {
-        iterator(obj[prop]);
+      if (obj.hasOwnProperty([prop])) {
+        iterator(obj[prop], prop);
       }
     }
   };
