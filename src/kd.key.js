@@ -9,8 +9,26 @@ var Key = (function () {
    * @constructor
    */
   function Key (keyName, keyCode) {
+    /** @type {string} */
+    this._keyName = keyName;
 
+    /** @type {number} */
+    this._keyCode = keyCode;
   }
+
+
+  /**
+   * The function to be invoked on every tick that the key is held down for.
+   * @type {function}
+   */
+  Key.prototype._downHandler = util.noop;
+
+
+  /**
+   * The function to be invoked when the key is released.
+   * @type {function}
+   */
+  Key.prototype._upHandler = util.noop;
 
 
   /**
@@ -20,7 +38,11 @@ var Key = (function () {
    * previously bound.
    */
   Key.prototype.down = function (opt_handler) {
-
+    if (opt_handler) {
+      this._downHandler = opt_handler;
+    } else {
+      this._downHandler();
+    }
   };
 
 
@@ -31,7 +53,11 @@ var Key = (function () {
    * previously bound.
    */
   Key.prototype.up = function (opt_handler) {
-
+    if (opt_handler) {
+      this._upHandler = opt_handler;
+    } else {
+      this._upHandler();
+    }
   };
 
 
@@ -39,7 +65,7 @@ var Key = (function () {
    * Remove the handler that was bound with `kd.Key#down`.
    */
   Key.prototype.unbindDown = function () {
-
+    this._downHandler = util.noop;
   };
 
 
@@ -47,7 +73,7 @@ var Key = (function () {
    * Remove the handler that was bound with `kd.Key#up`.
    */
   Key.prototype.unbindUp = function () {
-
+    this._upHandler = util.noop;
   };
 
   return Key;

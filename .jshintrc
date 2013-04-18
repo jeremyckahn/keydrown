@@ -1,10 +1,11 @@
 {
   "globals": {
-    "__note": "These variables aren't actually exposed as globals.  They are defined in the modules.",
+    "__note": "These variables aren't actually exposed as globals.  They are defined in the modules and visible throughout the library.",
     "define": true,
     "util": true,
     "kd": true,
     "Key": true
+    "keysDown": true
     "KEY_MAP": true
   },
 

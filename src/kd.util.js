@@ -16,6 +16,12 @@ var util = (function () {
     }
   };
 
+
+  /**
+   * An empty function.  NOOP!
+   */
+  util.noop = function () {};
+
   return util;
 
 }());
