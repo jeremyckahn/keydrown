@@ -5,23 +5,26 @@ var kd = (function () {
   var kd = {};
   kd.Key = Key;
 
-  /**
+  /*!
    * @type Array.<string>
    */
   var keysDown = [];
 
 
-  kd.tick = function () {
+  /**
+   * Evaluate which keys are held down and invoke their handler functions.
+   */
+  kd.tick = function () /*!*/ {
 
   };
 
 
   /**
    * A basic run loop.  `handler` gets called approximately 60 times a second.
-   * @param {function} handler The function to call on every tick.  You almost
-   * certainly want to call `kd.tick` in this function.
+   *
+   * @param {function} handler The function to call on every tick.  You almost certainly want to call `kd.tick` in this function.
    */
-  kd.run = function (handler) {
+  kd.run = function (handler) /*!*/ {
 
   };
 
@@ -29,7 +32,7 @@ var kd = (function () {
   /**
    * Cancels the loop created by `kd.run`.
    */
-  kd.stop = function () {
+  kd.stop = function () /*!*/ {
 
   };
 

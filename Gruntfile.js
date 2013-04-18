@@ -62,8 +62,8 @@ module.exports = function(grunt) {
       },
       files: {
         src: [
-          'src/kd.core.js',
-          'src/kd.key.js'
+          'src/kd.key.js',
+          'src/kd.core.js'
         ],
         dest: 'dist/doc'
       }
@@ -72,6 +72,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint', 'qunit']);
   grunt.registerTask('build',
-    ['concat:standard', 'uglify:standard' /*, 'dox'*/]);
+    ['concat:standard', 'uglify:standard' , 'dox']);
 
 };

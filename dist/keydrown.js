@@ -1,5 +1,5 @@
-/*! Keydrown - v0.0.1 - 2013-04-16 - http://jeremyckahn.github.com/keydrown */
-;(function (root) {
+/*! Keydrown - v0.0.1 - 2013-04-17 - http://jeremyckahn.github.com/keydrown */
+;(function (window) {
 
 var util = (function () {
 
@@ -7,16 +7,23 @@ var util = (function () {
 
   /**
    * @param {Object} obj The Object to iterate through.
-   * @param {function} iterator The function to call for each property.
+   * @param {function(Object, string)} iterator The function to call for each
+   * property.
    */
   util.forEach = function (obj, iterator) {
     var prop;
     for (prop in obj) {
-      if (obj.hasOwnProperty[prop]) {
-        iterator(obj[prop]);
+      if (obj.hasOwnProperty([prop])) {
+        iterator(obj[prop], prop);
       }
     }
   };
+
+
+  /**
+   * An empty function.  NOOP!
+   */
+  util.noop = function () {};
 
   return util;
 
@@ -65,51 +72,76 @@ var Key = (function () {
   'use strict';
 
   /**
-   * @param {string} keyName The all-caps name of the key this Object
-   * represents.
+   * @param {string} keyName The all-caps name of the key this Object represents.
    * @param {number} keyCode The keyCode that corresponds to `keyName`.
    * @constructor
    */
-  function Key (keyName, keyCode) {
+  function Key (keyName, keyCode) /*!*/ {
+    /*! @type {string} */
+    this._keyName = keyName;
 
+    /*! @type {number} */
+    this._keyCode = keyCode;
   }
+
+
+  /*!
+   * The function to be invoked on every tick that the key is held down for.
+   *
+   * @type {function}
+   */
+  Key.prototype._downHandler = util.noop;
+
+
+  /*!
+   * The function to be invoked when the key is released.
+   *
+   * @type {function}
+   */
+  Key.prototype._upHandler = util.noop;
 
 
   /**
    * Bind a function to be called when the key is held down.
-   * @param {function} opt_handler The function to be called when the key is
-   * held down.  If omitted, this function invokes whatever handler was
-   * previously bound.
+   *
+   * @param {function} opt_handler The function to be called when the key is held down.  If omitted, this function invokes whatever handler was previously bound.
    */
-  Key.prototype.down = function (opt_handler) {
-
+  Key.prototype.down = function (opt_handler) /*!*/ {
+    if (opt_handler) {
+      this._downHandler = opt_handler;
+    } else {
+      this._downHandler();
+    }
   };
 
 
   /**
    * Bind a function to be called when the key is released.
-   * @param {function} opt_handler The function to be called when the key is
-   * released.  If omitted, this function invokes whatever handler was
-   * previously bound.
+   *
+   * @param {function} opt_handler The function to be called when the key is released.  If omitted, this function invokes whatever handler was previously bound.
    */
-  Key.prototype.up = function (opt_handler) {
-
+  Key.prototype.up = function (opt_handler) /*!*/ {
+    if (opt_handler) {
+      this._upHandler = opt_handler;
+    } else {
+      this._upHandler();
+    }
   };
 
 
   /**
    * Remove the handler that was bound with `kd.Key#down`.
    */
-  Key.prototype.unbindDown = function () {
-
+  Key.prototype.unbindDown = function () /*!*/ {
+    this._downHandler = util.noop;
   };
 
 
   /**
    * Remove the handler that was bound with `kd.Key#up`.
    */
-  Key.prototype.unbindUp = function () {
-
+  Key.prototype.unbindUp = function () /*!*/ {
+    this._upHandler = util.noop;
   };
 
   return Key;
@@ -123,23 +155,26 @@ var kd = (function () {
   var kd = {};
   kd.Key = Key;
 
-  /**
+  /*!
    * @type Array.<string>
    */
   var keysDown = [];
 
 
-  kd.tick = function () {
+  /**
+   * Evaluate which keys are held down and invoke their handler functions.
+   */
+  kd.tick = function () /*!*/ {
 
   };
 
 
   /**
    * A basic run loop.  `handler` gets called approximately 60 times a second.
-   * @param {function} handler The function to call on every tick.  You almost
-   * certainly want to call `kd.tick` in this function.
+   *
+   * @param {function} handler The function to call on every tick.  You almost certainly want to call `kd.tick` in this function.
    */
-  kd.run = function (handler) {
+  kd.run = function (handler) /*!*/ {
 
   };
 
@@ -147,9 +182,15 @@ var kd = (function () {
   /**
    * Cancels the loop created by `kd.run`.
    */
-  kd.stop = function () {
+  kd.stop = function () /*!*/ {
 
   };
+
+
+  // Initialize the KEY Objects
+  util.forEach(KEY_MAP, function (keyCode, keyName) {
+    kd[keyName] = new Key(keyName, keyCode);
+  });
 
 
   return kd;
@@ -166,7 +207,7 @@ if (typeof define === 'function' && define.amd) {
 } else {
   // Load Library normally (creating a Library global) if not using an AMD
   // loader.
-  root.kd = kd;
+  window.kd = kd;
 }
 
 } (this));
