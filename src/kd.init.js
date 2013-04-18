@@ -8,5 +8,5 @@ if (typeof define === 'function' && define.amd) {
 } else {
   // Load Library normally (creating a Library global) if not using an AMD
   // loader.
-  root.kd = kd;
+  window.kd = kd;
 }

@@ -4,8 +4,8 @@
     "define": true,
     "util": true,
     "kd": true,
-    "Key": true
-    "keysDown": true
+    "Key": true,
+    "keysDown": true,
     "KEY_MAP": true
   },
 

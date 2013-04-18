@@ -1,1 +1,1 @@
-;(function (root) {
+;(function (window) {
