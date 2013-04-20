@@ -4,7 +4,7 @@ var util = (function () {
 
   /**
    * @param {Object} obj The Object to iterate through.
-   * @param {function(Object, string)} iterator The function to call for each
+   * @param {function(*, string)} iterator The function to call for each
    * property.
    */
   util.forEach = function (obj, iterator) {
@@ -19,7 +19,7 @@ var util = (function () {
 
 
   /**
-   * Creates a transposed copy of an Object.
+   * Create a transposed copy of an Object.
    *
    * @param {Object} obj
    * @return {Object}
@@ -32,6 +32,20 @@ var util = (function () {
     });
 
     return transpose;
+  };
+
+
+  /**
+   * Push a value onto an array if it is not present in the array already.
+   * Otherwise, this is a no-op.
+   *
+   * @param {Array} arr
+   * @param {*} val
+   */
+  util.pushUnique = function (arr, val) {
+    if (arr.indexOf(val) !== -1) {
+      arr.push(val);
+    }
   };
 
 

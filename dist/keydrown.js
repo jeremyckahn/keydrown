@@ -1,4 +1,4 @@
-/*! Keydrown - v0.0.1 - 2013-04-17 - http://jeremyckahn.github.com/keydrown */
+/*! Keydrown - v0.0.0 - 2013-04-20 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -7,7 +7,7 @@ var util = (function () {
 
   /**
    * @param {Object} obj The Object to iterate through.
-   * @param {function(Object, string)} iterator The function to call for each
+   * @param {function(*, string)} iterator The function to call for each
    * property.
    */
   util.forEach = function (obj, iterator) {
@@ -16,6 +16,38 @@ var util = (function () {
       if (obj.hasOwnProperty([prop])) {
         iterator(obj[prop], prop);
       }
+    }
+  };
+  var forEach = kd.forEach;
+
+
+  /**
+   * Create a transposed copy of an Object.
+   *
+   * @param {Object} obj
+   * @return {Object}
+   */
+  util.getTranspose = function (obj) {
+    var transpose = {};
+
+    forEach(obj, function (val, key) {
+      transpose[val] = key;
+    });
+
+    return transpose;
+  };
+
+
+  /**
+   * Push a value onto an array if it is not present in the array already.
+   * Otherwise, this is a no-op.
+   *
+   * @param {Array} arr
+   * @param {*} val
+   */
+  util.pushUnique = function (arr, val) {
+    if (arr.indexOf(val) !== -1) {
+      arr.push(val);
     }
   };
 
@@ -31,6 +63,7 @@ var util = (function () {
 
 /**
  * Lookup table of keys to keyCodes.
+ *
  * @type {Object.<number>}
  */
 var KEY_MAP = {
@@ -67,7 +100,15 @@ var KEY_MAP = {
   ,'DOWN': 40
 };
 
-var Key = (function () {
+
+/**
+ * The transposed version of KEY_MAP.
+ *
+ * @type {Object.<string>}
+ */
+var TRANSPOSED_KEY_MAP = util.getTranspose(KEY_MAP);
+
+var Key = (function (keysDown) {
 
   'use strict';
 
@@ -146,7 +187,15 @@ var Key = (function () {
 
   return Key;
 
-}());
+/**
+ * The variables passed into the closure here are defined in kd.core.js.
+ */ /*!*/
+}(keysDown));
+
+/*!
+ * @type Array.<string>
+ */
+var keysDown = [];
 
 var kd = (function () {
 
@@ -154,11 +203,6 @@ var kd = (function () {
 
   var kd = {};
   kd.Key = Key;
-
-  /*!
-   * @type Array.<string>
-   */
-  var keysDown = [];
 
 
   /**
