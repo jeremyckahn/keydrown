@@ -1,8 +1,3 @@
-/*!
- * @type Array.<string>
- */
-var keysDown = [];
-
 var kd = (function () {
 
   'use strict';
@@ -37,9 +32,17 @@ var kd = (function () {
   };
 
 
+  // SETUP
+  //
+
+
   // Initialize the KEY Objects
   util.forEach(KEY_MAP, function (keyCode, keyName) {
     kd[keyName] = new Key(keyName, keyCode);
+  });
+
+  util.on(window, 'keydown', function (evt) {
+
   });
 
 

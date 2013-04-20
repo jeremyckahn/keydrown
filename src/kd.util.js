@@ -15,7 +15,7 @@ var util = (function () {
       }
     }
   };
-  var forEach = kd.forEach;
+  var forEach = util.forEach;
 
 
   /**

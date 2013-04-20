@@ -1,3 +1,8 @@
+/*!
+ * @type Array.<string>
+ */
+var keysDown = [];
+
 var Key = (function (keysDown) {
 
   'use strict';
