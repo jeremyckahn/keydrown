@@ -43,7 +43,7 @@ var util = (function () {
    * @param {*} val
    */
   util.pushUnique = function (arr, val) {
-    if (arr.indexOf(val) !== -1) {
+    if (arr.indexOf(val) === -1) {
       arr.push(val);
     }
   };
@@ -79,6 +79,20 @@ var util = (function () {
       element.attachEvent('on' + eventName, handler);
     }
   };
+
+
+  /**
+   * Shim for requestAnimationFrame.  See:
+   * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+   */
+  util.requestAnimationFrame = (function(){
+    return window.requestAnimationFrame  ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame    ||
+      function( callback ){
+        window.setTimeout(callback, 1000 / 60);
+      };
+  })();
 
 
   /**

@@ -18,7 +18,7 @@ var util = (function () {
       }
     }
   };
-  var forEach = kd.forEach;
+  var forEach = util.forEach;
 
 
   /**
@@ -46,10 +46,56 @@ var util = (function () {
    * @param {*} val
    */
   util.pushUnique = function (arr, val) {
-    if (arr.indexOf(val) !== -1) {
+    if (arr.indexOf(val) === -1) {
       arr.push(val);
     }
   };
+
+
+  /**
+   * Remove a value from an array.  Assumes there is only one instance of the
+   * value present in the array.
+   *
+   * @param {Array} arr
+   * @param {*} val
+   */
+  util.removeValue = function (arr, val) {
+    var index = arr.indexOf(val);
+
+    if (index !== -1) {
+      arr.splice(index, 1);
+    }
+  };
+
+
+  /**
+   * Cross-browser function for listening for and handling an event.
+   *
+   * @param {Element} element
+   * @param {string} eventName
+   * @param {function} handler
+   */
+  util.on = function (element, eventName, handler) {
+    if (element.addEventListener) {
+      element.addEventListener(eventName, handler, false);
+    } else if (element.attachEvent) {
+      element.attachEvent('on' + eventName, handler);
+    }
+  };
+
+
+  /**
+   * Shim for requestAnimationFrame.  See:
+   * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+   */
+  util.requestAnimationFrame = (function(){
+    return window.requestAnimationFrame  ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame    ||
+      function( callback ){
+        window.setTimeout(callback, 1000 / 60);
+      };
+  })();
 
 
   /**
@@ -108,7 +154,12 @@ var KEY_MAP = {
  */
 var TRANSPOSED_KEY_MAP = util.getTranspose(KEY_MAP);
 
-var Key = (function (keysDown) {
+/*!
+ * @type Array.<string>
+ */
+var keysDown = [];
+
+var Key = (function () {
 
   'use strict';
 
@@ -187,17 +238,9 @@ var Key = (function (keysDown) {
 
   return Key;
 
-/**
- * The variables passed into the closure here are defined in kd.core.js.
- */ /*!*/
-}(keysDown));
+}());
 
-/*!
- * @type Array.<string>
- */
-var keysDown = [];
-
-var kd = (function () {
+var kd = (function (keysDown) {
 
   'use strict';
 
@@ -209,7 +252,15 @@ var kd = (function () {
    * Evaluate which keys are held down and invoke their handler functions.
    */
   kd.tick = function () /*!*/ {
+    var i, len = keysDown.length;
+    for (i = 0; i < len; i++) {
+      var keyCode = keysDown[i];
 
+      var keyName = TRANSPOSED_KEY_MAP[keyCode];
+      if (keyName) {
+        kd[keyName].down();
+      }
+    }
   };
 
 
@@ -219,7 +270,10 @@ var kd = (function () {
    * @param {function} handler The function to call on every tick.  You almost certainly want to call `kd.tick` in this function.
    */
   kd.run = function (handler) /*!*/ {
-
+    util.requestAnimationFrame.call(window, function () {
+       kd.run(handler);
+       handler();
+    });
   };
 
 
@@ -231,15 +285,30 @@ var kd = (function () {
   };
 
 
+  // SETUP
+  //
+
+
   // Initialize the KEY Objects
   util.forEach(KEY_MAP, function (keyCode, keyName) {
     kd[keyName] = new Key(keyName, keyCode);
   });
 
+  util.on(window, 'keydown', function (evt) {
+    util.pushUnique(keysDown, evt.keyCode);
+  });
+
+  util.on(window, 'keyup', function (evt) {
+    util.removeValue(keysDown, evt.keyCode);
+  });
+
 
   return kd;
 
-}());
+/**
+ * The variables passed into the closure here are defined in kd.key.js.
+ */ /*!*/
+}(keysDown));
 
 // Bootstrap the library
 if (typeof define === 'function' && define.amd) {

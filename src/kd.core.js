@@ -16,7 +16,7 @@ var kd = (function (keysDown) {
 
       var keyName = TRANSPOSED_KEY_MAP[keyCode];
       if (keyName) {
-        kd[keyName]();
+        kd[keyName].down();
       }
     }
   };
@@ -28,7 +28,10 @@ var kd = (function (keysDown) {
    * @param {function} handler The function to call on every tick.  You almost certainly want to call `kd.tick` in this function.
    */
   kd.run = function (handler) /*!*/ {
-
+    util.requestAnimationFrame.call(window, function () {
+       kd.run(handler);
+       handler();
+    });
   };
 
 
