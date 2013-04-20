@@ -15,6 +15,24 @@ var util = (function () {
       }
     }
   };
+  var forEach = kd.forEach;
+
+
+  /**
+   * Creates a transposed copy of an Object.
+   *
+   * @param {Object} obj
+   * @return {Object}
+   */
+  util.getTranspose = function (obj) {
+    var transpose = {};
+
+    forEach(obj, function (val, key) {
+      transpose[val] = key;
+    });
+
+    return transpose;
+  };
 
 
   /**

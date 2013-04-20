@@ -1,5 +1,6 @@
 /**
  * Lookup table of keys to keyCodes.
+ *
  * @type {Object.<number>}
  */
 var KEY_MAP = {
@@ -35,3 +36,11 @@ var KEY_MAP = {
   ,'RIGHT': 39
   ,'DOWN': 40
 };
+
+
+/**
+ * The transposed version of KEY_MAP.
+ *
+ * @type {Object.<string>}
+ */
+var TRANSPOSED_KEY_MAP = util.getTranspose(KEY_MAP);

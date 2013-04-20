@@ -1,14 +1,14 @@
+/*!
+ * @type Array.<string>
+ */
+var keysDown = [];
+
 var kd = (function () {
 
   'use strict';
 
   var kd = {};
   kd.Key = Key;
-
-  /*!
-   * @type Array.<string>
-   */
-  var keysDown = [];
 
 
   /**
