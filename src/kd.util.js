@@ -50,6 +50,22 @@ var util = (function () {
 
 
   /**
+   * Cross-browser function for listening for and handling an event.
+   *
+   * @param {Element} element
+   * @param {string} eventName
+   * @param {function} handler
+   */
+  util.on = function (element, eventName, handler) {
+    if (element.addEventListener) {
+      element.addEventListener(eventName, handler, false);
+    } else if (element.attachEvent) {
+      element.attachEvent('on' + eventName, handler);
+    }
+  };
+
+
+  /**
    * An empty function.  NOOP!
    */
   util.noop = function () {};
