@@ -50,6 +50,22 @@ var util = (function () {
 
 
   /**
+   * Remove a value from an array.  Assumes there is only one instance of the
+   * value present in the array.
+   *
+   * @param {Array} arr
+   * @param {*} val
+   */
+  util.removeValue = function (arr, val) {
+    var index = arr.indexOf(val);
+
+    if (index !== -1) {
+      arr.splice(index, 1);
+    }
+  };
+
+
+  /**
    * Cross-browser function for listening for and handling an event.
    *
    * @param {Element} element

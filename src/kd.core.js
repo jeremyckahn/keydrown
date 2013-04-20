@@ -1,4 +1,4 @@
-var kd = (function () {
+var kd = (function (keysDown) {
 
   'use strict';
 
@@ -42,10 +42,17 @@ var kd = (function () {
   });
 
   util.on(window, 'keydown', function (evt) {
+    util.pushUnique(keysDown, evt.keyCode);
+  });
 
+  util.on(window, 'keyup', function (evt) {
+    util.removeValue(keysDown, evt.keyCode);
   });
 
 
   return kd;
 
-}());
+/**
+ * The variables passed into the closure here are defined in kd.key.js.
+ */ /*!*/
+}(keysDown));

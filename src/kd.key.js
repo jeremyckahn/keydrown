@@ -3,7 +3,7 @@
  */
 var keysDown = [];
 
-var Key = (function (keysDown) {
+var Key = (function () {
 
   'use strict';
 
@@ -82,7 +82,4 @@ var Key = (function (keysDown) {
 
   return Key;
 
-/**
- * The variables passed into the closure here are defined in kd.core.js.
- */ /*!*/
-}(keysDown));
+}());
