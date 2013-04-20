@@ -6,7 +6,8 @@
     "kd": true,
     "Key": true,
     "keysDown": true,
-    "KEY_MAP": true
+    "KEY_MAP": true,
+    "TRANSPOSED_KEY_MAP": true
   },
 
   "asi": false,

@@ -10,7 +10,15 @@ var kd = (function (keysDown) {
    * Evaluate which keys are held down and invoke their handler functions.
    */
   kd.tick = function () /*!*/ {
+    var i, len = keysDown.length;
+    for (i = 0; i < len; i++) {
+      var keyCode = keysDown[i];
 
+      var keyName = TRANSPOSED_KEY_MAP[keyCode];
+      if (keyName) {
+        kd[keyName]();
+      }
+    }
   };
 
 

@@ -5,6 +5,15 @@
   <script src="src/kd.map.js"></script>
   <script src="src/kd.key.js"></script>
   <script src="src/kd.core.js"></script>
+  <script>
+    kd.SPACE.down(function () {
+      console.log('The space bar is held down!  Yeah!');
+    });
+
+    kd.run(function () {
+      kd.tick();
+    });
+  </script>
 </head>
 <body>
 </body>
