@@ -8,17 +8,10 @@ var Key = (function () {
   'use strict';
 
   /**
-   * @param {string} keyName The all-caps name of the key this Object represents.
-   * @param {number} keyCode The keyCode that corresponds to `keyName`.
+   * Represents a key on the keyboard.  You'll never actually call this method directly; Key Objects for every key that Keydrown supports are created for you when the library is initialized (as in, when the file is loaded).  You will, however, use the `prototype` methods below to bind functions to key states.
    * @constructor
    */
-  function Key (keyName, keyCode) /*!*/ {
-    /*! @type {string} */
-    this._keyName = keyName;
-
-    /*! @type {number} */
-    this._keyCode = keyCode;
-  }
+  function Key () /*!*/ {}
 
 
   /*!
@@ -66,7 +59,7 @@ var Key = (function () {
 
 
   /**
-   * Remove the handler that was bound with `kd.Key#down`.
+   * Remove the handler that was bound with [`kd.Key#down`](#down).
    */
   Key.prototype.unbindDown = function () /*!*/ {
     this._downHandler = util.noop;
@@ -74,7 +67,7 @@ var Key = (function () {
 
 
   /**
-   * Remove the handler that was bound with `kd.Key#up`.
+   * Remove the handler that was bound with [`kd.Key#up`](#up).
    */
   Key.prototype.unbindUp = function () /*!*/ {
     this._upHandler = util.noop;

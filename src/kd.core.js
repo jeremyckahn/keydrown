@@ -44,7 +44,7 @@ var kd = (function (keysDown) {
 
 
   /**
-   * Cancels the loop created by `kd.run`.
+   * Cancels the loop created by [`kd.run`](#run).
    */
   kd.stop = function () /*!*/ {
     isRunning = false;
@@ -57,7 +57,7 @@ var kd = (function (keysDown) {
 
   // Initialize the KEY Objects
   util.forEach(KEY_MAP, function (keyCode, keyName) {
-    kd[keyName] = new Key(keyName, keyCode);
+    kd[keyName] = new Key();
   });
 
   util.on(window, 'keydown', function (evt) {
@@ -76,7 +76,7 @@ var kd = (function (keysDown) {
 
   return kd;
 
-/**
+/*!
  * The variables passed into the closure here are defined in kd.key.js.
  */ /*!*/
 }(keysDown));
