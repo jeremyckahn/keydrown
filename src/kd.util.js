@@ -55,12 +55,14 @@ var util = (function () {
    *
    * @param {Array} arr
    * @param {*} val
+   * @return {*} The value that was removed from arr.  Returns undefined if
+   * nothing was removed.
    */
   util.removeValue = function (arr, val) {
     var index = arr.indexOf(val);
 
     if (index !== -1) {
-      arr.splice(index, 1);
+      return arr.splice(index, 1)[0];
     }
   };
 

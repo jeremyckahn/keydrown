@@ -10,6 +10,10 @@
       console.log('The space bar is held down!  Yeah!');
     });
 
+    kd.SPACE.up(function () {
+      console.log('The space bar was released!');
+    });
+
     kd.ESC.down(function () {
       console.log('Stopping the run loop...');
       kd.stop();

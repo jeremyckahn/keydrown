@@ -65,7 +65,12 @@ var kd = (function (keysDown) {
   });
 
   util.on(window, 'keyup', function (evt) {
-    util.removeValue(keysDown, evt.keyCode);
+    var keyCode = util.removeValue(keysDown, evt.keyCode);
+
+    var keyName = TRANSPOSED_KEY_MAP[keyCode];
+    if (keyName) {
+      kd[keyName].up();
+    }
   });
 
 
