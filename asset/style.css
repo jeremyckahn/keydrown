@@ -1,0 +1,47 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 4em;
+  margin: 20px 0 10px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 10px 0 30px;
+  text-align: center;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.3em;
+}
+
+pre {
+  font-size: 1.2em;
+  margin-left: 40px;
+}
+
+.content {
+  margin: 0 auto;
+  width: 800px;
+}
+
+.log-output {
+  background: #e8e8e8;
+  height: 200px;
+  overflow: auto;
+}
+
+.log-output pre {
+  margin: 0;
+}
+
+footer {
+  font-size: 0.9em;
+  font-style: italic;
+  margin: 50px 0 10px;
+  text-align: center;
+}

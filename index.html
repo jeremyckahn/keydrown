@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Keydrown - A JavaScript key state handler for web apps</title>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <link type="text/css" rel="stylesheet" href="asset/style.css"/>
+</head>
+<body>
+  <div class="content">
+    <h1>Keydrown</h1>
+    <h2>A JavaScript key state handler for web apps</h2>
+    <p>Keydrown is a library for managing the state of the keyboard in a web application or game.  It is tiny (about .5Kb), unobtrusive and can be learned in about five minutes.</p>
+    <ul>
+      <li><a href="dist/doc">API documentation</a></li>
+    </ul>
+    <h3>Why is Keydrown useful?</h3>
+    <p>When you bind a function to the <code>keydown</code> event, it doesn't fire consistently.  The web browser uses the operating system's built-in keyboard delay preferences, and the first brief moment after the initial key press does not invoke the event handler.  Here's a demonstration of native behavior:</p>
+    <pre>
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 81) {
+    console.log('The "Q" key is being held down...?');
+  }
+});
+
+document.addEventListener('keyup', function (evt) {
+  if (evt.keyCode === 81) {
+    console.clear();
+  }
+});
+    </pre>
+    <p>Press and hold the "Q" key:</p>
+    <div id="native-hold" class="log-output"></div>
+    <p>Notice the lag at the beginning of the hold.  This sluggishness noticeably impacts the user experience of applications &mdash; especially games.  A better way to handle the <code>keydown</code> event is to record when a key is pressed, invoke the handler function for every update, and then stop invoking the handler when an analagous <code>keyup</code> event is detected.  Keydrown makes this really easy:</p>
+    <pre>
+kd.P.down(function () {
+ console.log('The "P" key is being held down!');
+});
+
+kd.P.up(function () {
+ console.clear();
+});
+
+// This update loop is the heartbeat of Keydrown
+kd.run(function () {
+  kd.tick();
+});
+    </pre>
+    <p>Press and hold the "P" key:</p>
+    <div id="kd-hold" class="log-output"></div>
+    <p>As you can see, the logging from the code example using Keydrown is much more responsive.</p>
+    <h3>How do I use Keydrown?</h3>
+    <p>Keydrown has no dependencies, so all you need is either one of the following:</p>
+    <ul>
+      <li><a href="dist/keydrown.js">keydrown.js</a></li>
+      <li><a href="dist/keydrown.min.js">keydrown.min.js</a></li>
+    </ul>
+    <p>All of the Keydrown APIs live under the <code>kd</code> namespace.  Keydrown is tick-based, so you'll need to call <a href="dist/doc/src/kd.core.js.html#tick"><code>kd.tick()</code></a> somewhere in your run loop.  For your convenience, Keydrown provides <a href="dist/doc/src/kd.core.js.html#run"><code>kd.run()</code></a> for a basic run loop if you don't already have one.</p>
+    <pre>
+kd.run(function () {
+  kd.tick();
+});
+    </pre>
+    <p>To invoke a function when a key is held down, do something like this:</p>
+    <pre>
+// Function fires when the space bar is held down
+kd.SPACE.down(function () {
+  // ...
+});
+    </pre>
+    <p>To invoke a function when a key is released:</p>
+    <pre>
+// Function fires when the space bar is released
+kd.SPACE.up(function () {
+  // ...
+});
+    </pre>
+    <p>...And that's it!  You can see what keys Keydrown supports by looking at <a href="https://github.com/jeremyckahn/keydrown/blob/master/src/kd.map.js" target="_blank">kd.map.js</a>.  You can see the full API documentation <a href="dist/doc">here</a>.  If you find any bugs, please report them in the <a href="https://github.com/jeremyckahn/keydrown/issues" target="_blank">Github Issue Tracker</a>.  Enjoy!</p>
+    <a href="https://github.com/jeremyckahn/keydrown"><img style="position: absolute; top: 0; left: 0; border: 0;" src="asset/img/forkme.png" alt="Fork me on GitHub"></a>
+    <footer>
+    <p>Keydrown is an <a href="http://opensource.org/licenses/MIT" target="_blank">MIT-licensed</a> project created by <a href="http://jeremyckahn.com" target="_blank">Jeremy Kahn</a>.</p>
+    </footer>
+  </div>
+  <script src="dist/keydrown.min.js"></script>
+  <script src="asset/index.js"></script>
+</body>
+</html>
