@@ -10,6 +10,11 @@
       console.log('The space bar is held down!  Yeah!');
     });
 
+    kd.ESC.down(function () {
+      console.log('Stopping the run loop...');
+      kd.stop();
+    });
+
     kd.run(function () {
       kd.tick();
     });

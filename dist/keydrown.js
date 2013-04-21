@@ -139,6 +139,7 @@ var KEY_MAP = {
   ,'X': 88
   ,'Y': 89
   ,'Z': 90
+  ,'ESC': 27
   ,'SPACE': 32
   ,'LEFT': 37
   ,'UP': 38
@@ -247,6 +248,8 @@ var kd = (function (keysDown) {
   var kd = {};
   kd.Key = Key;
 
+  var isRunning = false;
+
 
   /**
    * Evaluate which keys are held down and invoke their handler functions.
@@ -270,9 +273,15 @@ var kd = (function (keysDown) {
    * @param {function} handler The function to call on every tick.  You almost certainly want to call `kd.tick` in this function.
    */
   kd.run = function (handler) /*!*/ {
+    isRunning = true;
+
     util.requestAnimationFrame.call(window, function () {
-       kd.run(handler);
-       handler();
+      if (!isRunning) {
+        return;
+      }
+
+      kd.run(handler);
+      handler();
     });
   };
 
@@ -281,7 +290,7 @@ var kd = (function (keysDown) {
    * Cancels the loop created by `kd.run`.
    */
   kd.stop = function () /*!*/ {
-
+    isRunning = false;
   };
 
 
