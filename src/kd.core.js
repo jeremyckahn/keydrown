@@ -60,11 +60,11 @@ var kd = (function (keysDown) {
     kd[keyName] = new Key();
   });
 
-  util.on(window, 'keydown', function (evt) {
+  util.documentOn('keydown', function (evt) {
     util.pushUnique(keysDown, evt.keyCode);
   });
 
-  util.on(window, 'keyup', function (evt) {
+  util.documentOn('keyup', function (evt) {
     var keyCode = util.removeValue(keysDown, evt.keyCode);
 
     var keyName = TRANSPOSED_KEY_MAP[keyCode];

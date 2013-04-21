@@ -7,17 +7,26 @@
   <script src="src/kd.map.js"></script>
   <script src="src/kd.key.js"></script>
   <script src="src/kd.core.js"></script>
+</head>
+<body>
+  <pre>
+  </pre>
   <script>
+    var pre = document.getElementsByTagName('pre')[0];
+    function log (text) {
+      pre.innerText += '\r\n' + text;
+    }
+
     kd.SPACE.down(function () {
-      console.log('The space bar is held down!  Yeah!');
+      log('The space bar is held down!  Yeah!');
     });
 
     kd.SPACE.up(function () {
-      console.log('The space bar was released!');
+      log('The space bar was released!');
     });
 
     kd.ESC.down(function () {
-      console.log('Stopping the run loop...');
+      log('Stopping the run loop...');
       kd.stop();
     });
 
@@ -25,7 +34,5 @@
       kd.tick();
     });
   </script>
-</head>
-<body>
 </body>
 </html>

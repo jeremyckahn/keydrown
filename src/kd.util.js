@@ -36,6 +36,30 @@ var util = (function () {
 
 
   /**
+   * Implementation of Array#indexOf because IE<9 doesn't support it.
+   *
+   * @param {Array} arr
+   * @param {*} val
+   * @return {number} Index of the found element or -1 if not found.
+   */
+  util.indexOf = function (arr, val) {
+    if (arr.indexOf) {
+      return arr.indexOf(val);
+    }
+
+    var i, len = arr.length;
+    for (i = 0; i < len; i++) {
+      if (arr[i] === val) {
+        return i;
+      }
+    }
+
+    return -1;
+  };
+  var indexOf = util.indexOf;
+
+
+  /**
    * Push a value onto an array if it is not present in the array already.
    * Otherwise, this is a no-op.
    *
@@ -43,7 +67,7 @@ var util = (function () {
    * @param {*} val
    */
   util.pushUnique = function (arr, val) {
-    if (arr.indexOf(val) === -1) {
+    if (indexOf(arr, val) === -1) {
       arr.push(val);
     }
   };
@@ -59,7 +83,7 @@ var util = (function () {
    * nothing was removed.
    */
   util.removeValue = function (arr, val) {
-    var index = arr.indexOf(val);
+    var index = indexOf(arr, val);
 
     if (index !== -1) {
       return arr.splice(index, 1)[0];
@@ -68,17 +92,16 @@ var util = (function () {
 
 
   /**
-   * Cross-browser function for listening for and handling an event.
+   * Cross-browser function for listening for and handling an event on the document element.
    *
-   * @param {Element} element
    * @param {string} eventName
    * @param {function} handler
    */
-  util.on = function (element, eventName, handler) {
-    if (element.addEventListener) {
-      element.addEventListener(eventName, handler, false);
-    } else if (element.attachEvent) {
-      element.attachEvent('on' + eventName, handler);
+  util.documentOn = function (eventName, handler) {
+    if (window.addEventListener) {
+      window.addEventListener(eventName, handler, false);
+    } else if (document.attachEvent) {
+      document.attachEvent('on' + eventName, handler);
     }
   };
 
