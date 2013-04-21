@@ -42,16 +42,15 @@ All Keydrown functionality exists under the `kd` namespace.
 ### Key Objects
 
 Every letter key, as well as some other keys on the keyboard are represented in
-a map of Objects with uppercase key names:
+a map of `kd.Key` instances with uppercase key names:
 
 ````javascript
-typeof kd.A;       // object
-typeof kd.SPACE;   // object
-typeof kd.UP;      // object
+kd.A instanceof kd.Key;
+kd.SPACE instanceof kd.Key;
+kd.UP instanceof kd.Key;
 ````
 
-These uppercased Objects are subclasses of `kd.Key`.  `kd.Key` has the
-following API, and by extension, so do the KEY Objects:
+`kd.Key` has the following API:
 
 ````javascript
 /**
