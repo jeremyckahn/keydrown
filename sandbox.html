@@ -9,12 +9,12 @@
   <script src="src/kd.core.js"></script>
 </head>
 <body>
-  <pre>
-  </pre>
+  <div id="log-output">
+  </div>
   <script>
-    var pre = document.getElementsByTagName('pre')[0];
+    var logOutput = document.getElementById('log-output');
     function log (text) {
-      pre.innerText += '\r\n' + text;
+      logOutput.innerHTML += '<pre>' + text + '</pre>';
     }
 
     kd.SPACE.down(function () {
