@@ -1,4 +1,4 @@
-/*! Keydrown - v0.1.0 - 2013-04-20 - http://jeremyckahn.github.com/keydrown */
+/*! Keydrown - v0.1.1 - 2013-04-22 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -332,6 +332,12 @@ var kd = (function (keysDown) {
     if (keyName) {
       kd[keyName].up();
     }
+  });
+
+  // Stop firing the "down" handlers if the user loses focus of the browser
+  // window.
+  util.documentOn('blur', function (evt) {
+    keysDown.length = 0;
   });
 
 
