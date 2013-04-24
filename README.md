@@ -165,3 +165,13 @@ kd.run(function () {
   kd.tick();
 });
 ````
+
+-------------------------------------------------------------------------------
+
+### Support
+
+Keydrown supports all modern browsers, as well as Internet Explorer 7 and up (please see the [note below](#known-issues) about IE compatibility).
+
+### Known issues
+
+Keydrown has a feature where when the user blurs the browser window (for example, switching to another application or tab), the key state is reset and "down" handlers stop firing.  This functionality is not supported in IE 7 and 8, as there doesn't seem to be a way to bind to the `window`'s `blur` event correctly in those browsers.  You can assign a function to `window.onblur`, but that function will only fire once IE regains focus, which is not sufficient for Keydrown's reset-on-blur functionality.
