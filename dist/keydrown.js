@@ -1,4 +1,4 @@
-/*! Keydrown - v0.1.1 - 2013-04-22 - http://jeremyckahn.github.com/keydrown */
+/*! Keydrown - v0.1.2 - 2013-04-28 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -7,8 +7,7 @@ var util = (function () {
 
   /**
    * @param {Object} obj The Object to iterate through.
-   * @param {function(*, string)} iterator The function to call for each
-   * property.
+   * @param {function(*, string)} iterator The function to call for each property.
    */
   util.forEach = function (obj, iterator) {
     var prop;
@@ -63,8 +62,7 @@ var util = (function () {
 
 
   /**
-   * Push a value onto an array if it is not present in the array already.
-   * Otherwise, this is a no-op.
+   * Push a value onto an array if it is not present in the array already.  Otherwise, this is a no-op.
    *
    * @param {Array} arr
    * @param {*} val
@@ -77,13 +75,11 @@ var util = (function () {
 
 
   /**
-   * Remove a value from an array.  Assumes there is only one instance of the
-   * value present in the array.
+   * Remove a value from an array.  Assumes there is only one instance of the value present in the array.
    *
    * @param {Array} arr
    * @param {*} val
-   * @return {*} The value that was removed from arr.  Returns undefined if
-   * nothing was removed.
+   * @return {*} The value that was removed from arr.  Returns undefined if nothing was removed.
    */
   util.removeValue = function (arr, val) {
     var index = indexOf(arr, val);
@@ -110,10 +106,9 @@ var util = (function () {
 
 
   /**
-   * Shim for requestAnimationFrame.  See:
-   * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+   * Shim for requestAnimationFrame.  See: http://paulirish.com/2011/requestanimationframe-for-smart-animating/
    */
-  util.requestAnimationFrame = (function(){
+  util.requestAnimationFrame = (function () {
     return window.requestAnimationFrame  ||
       window.webkitRequestAnimationFrame ||
       window.mozRequestAnimationFrame    ||
@@ -348,17 +343,16 @@ var kd = (function (keysDown) {
  */ /*!*/
 }(keysDown));
 
-// Bootstrap the library
-if (typeof define === 'function' && define.amd) {
-  // Expose Library as an AMD module if it's loaded with RequireJS or
-  // similar.
+if (typeof module === "object" && typeof module.exports === "object") {
+  // Keydrown was loaded as a CommonJS module (by Browserify, for example).
+  module.exports = kd;
+} else if (typeof define === "function" && define.amd) {
+  // Keydrown was loaded as an AMD module.
   define(function () {
     return kd;
   });
-} else {
-  // Load Library normally (creating a Library global) if not using an AMD
-  // loader.
-  window.kd = kd;
 }
 
-} (this));
+window.kd = kd;
+
+} (window));

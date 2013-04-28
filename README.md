@@ -50,7 +50,10 @@ kd.SPACE instanceof kd.Key;
 kd.UP instanceof kd.Key;
 ````
 
-`kd.Key` has the following API:
+You can see the full list of supported keys in
+[`kd.map.js`](https://github.com/jeremyckahn/keydrown/blob/master/src/kd.map.js)
+(more key codes can easily be added, please submit a Pull Request if you add
+more).  `kd.Key` has the following API:
 
 ````javascript
 /**
@@ -168,10 +171,41 @@ kd.run(function () {
 
 -------------------------------------------------------------------------------
 
+### Module compatibility
+
+Keydrown always creates the `kd` browser global, but it can also be loaded as
+an AMD module or as a CommonJS/Node-like module (through a tool like
+[Browserify](http://browserify.org/)).
+
+````javascript
+// Loaded with an AMD loader (such as Require.js)
+require(['./path/to/keydrown'], function (kd) {
+  kd.run(function () {
+    kd.tick();
+  });
+});
+````
+
+````javascript
+// Loaded as a CommonJS module, after running it through Browserify or similar
+var kd = require('./path/to/keydrown');
+
+kd.run(function () {
+  kd.tick();
+});
+````
+
 ### Support
 
-Keydrown supports all modern browsers, as well as Internet Explorer 7 and up (please see the [note below](#known-issues) about IE compatibility).
+Keydrown supports all modern browsers, as well as Internet Explorer 7 and up
+(please see the [note below](#known-issues) about IE compatibility).
 
 ### Known issues
 
-Keydrown has a feature where when the user blurs the browser window (for example, switching to another application or tab), the key state is reset and "down" handlers stop firing.  This functionality is not supported in IE 7 and 8, as there doesn't seem to be a way to bind to the `window`'s `blur` event correctly in those browsers.  You can assign a function to `window.onblur`, but that function will only fire once IE regains focus, which is not sufficient for Keydrown's reset-on-blur functionality.
+Keydrown has a feature where when the user blurs the browser window (for
+example, switching to another application or tab), the key state is reset and
+"down" handlers stop firing.  This functionality is not supported in IE 7 and
+8, as there doesn't seem to be a way to bind to the `window`'s `blur` event
+correctly in those browsers.  You can assign a function to `window.onblur`, but
+that function will only fire once IE regains focus, which is not sufficient for
+Keydrown's reset-on-blur functionality.

@@ -1,12 +1,11 @@
-// Bootstrap the library
-if (typeof define === 'function' && define.amd) {
-  // Expose Library as an AMD module if it's loaded with RequireJS or
-  // similar.
+if (typeof module === "object" && typeof module.exports === "object") {
+  // Keydrown was loaded as a CommonJS module (by Browserify, for example).
+  module.exports = kd;
+} else if (typeof define === "function" && define.amd) {
+  // Keydrown was loaded as an AMD module.
   define(function () {
     return kd;
   });
-} else {
-  // Load Library normally (creating a Library global) if not using an AMD
-  // loader.
-  window.kd = kd;
 }
+
+window.kd = kd;

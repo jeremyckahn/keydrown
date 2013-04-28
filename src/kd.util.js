@@ -4,8 +4,7 @@ var util = (function () {
 
   /**
    * @param {Object} obj The Object to iterate through.
-   * @param {function(*, string)} iterator The function to call for each
-   * property.
+   * @param {function(*, string)} iterator The function to call for each property.
    */
   util.forEach = function (obj, iterator) {
     var prop;
@@ -60,8 +59,7 @@ var util = (function () {
 
 
   /**
-   * Push a value onto an array if it is not present in the array already.
-   * Otherwise, this is a no-op.
+   * Push a value onto an array if it is not present in the array already.  Otherwise, this is a no-op.
    *
    * @param {Array} arr
    * @param {*} val
@@ -74,13 +72,11 @@ var util = (function () {
 
 
   /**
-   * Remove a value from an array.  Assumes there is only one instance of the
-   * value present in the array.
+   * Remove a value from an array.  Assumes there is only one instance of the value present in the array.
    *
    * @param {Array} arr
    * @param {*} val
-   * @return {*} The value that was removed from arr.  Returns undefined if
-   * nothing was removed.
+   * @return {*} The value that was removed from arr.  Returns undefined if nothing was removed.
    */
   util.removeValue = function (arr, val) {
     var index = indexOf(arr, val);
@@ -107,10 +103,9 @@ var util = (function () {
 
 
   /**
-   * Shim for requestAnimationFrame.  See:
-   * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+   * Shim for requestAnimationFrame.  See: http://paulirish.com/2011/requestanimationframe-for-smart-animating/
    */
-  util.requestAnimationFrame = (function(){
+  util.requestAnimationFrame = (function () {
     return window.requestAnimationFrame  ||
       window.webkitRequestAnimationFrame ||
       window.mozRequestAnimationFrame    ||
