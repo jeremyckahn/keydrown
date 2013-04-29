@@ -171,6 +171,16 @@ kd.run(function () {
 
 -------------------------------------------------------------------------------
 
+### Getting the code
+
+If you want to keep things simple, all you needo is either `dist/keydrown.js`
+or `dist/keydrown.min.js` from this Git repo.  Alternatively, you can install
+Keydrown via [Bower](http://bower.io/):
+
+````
+$: bower install keydrown
+````
+
 ### Module compatibility
 
 Keydrown always creates the `kd` browser global, but it can also be loaded as
@@ -195,7 +205,7 @@ kd.run(function () {
 });
 ````
 
-### Support
+### Browser compatibility
 
 Keydrown supports all modern browsers, as well as Internet Explorer 7 and up
 (please see the [note below](#known-issues) about IE compatibility).
