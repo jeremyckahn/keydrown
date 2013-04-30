@@ -27,11 +27,11 @@ TIME (seconds)           KEYDOWN HANDLER FIRING STATE
 
 ...And the handler will just keep firing until the button is released.  The
 expectation from the user is that the key handler would be firing for the
-entire duration of time that key is held down - the early ticks where the
+entire duration of time that the key is held down - the early ticks where the
 `keydown` state is not handled creates a feeling of sluggishness and noticeably
 worsens the User Experience.  A way around this delay is to only listen for one
 `keydown` event for a button, and execute the key handler on every tick until
-the `keyup` event is detected for that button.
+the corresponding `keyup` event is detected for that button.
 
 Keydrown makes this super easy.
 
@@ -45,15 +45,17 @@ Every letter key, as well as some other keys on the keyboard are represented in
 a map of `kd.Key` instances with uppercase key names:
 
 ````javascript
-kd.A instanceof kd.Key;
-kd.SPACE instanceof kd.Key;
-kd.UP instanceof kd.Key;
+kd.A instanceof kd.Key; // true
+kd.SPACE instanceof kd.Key; // true
+kd.UP instanceof kd.Key; // true
 ````
 
 You can see the full list of supported keys in
 [`kd.map.js`](https://github.com/jeremyckahn/keydrown/blob/master/src/kd.map.js)
 (more key codes can easily be added, please submit a Pull Request if you add
-more).  `kd.Key` has the following API:
+more).
+[`kd.Key`](http://jeremyckahn.github.io/keydrown/dist/doc/src/kd.key.js.html)
+has the following API:
 
 ````javascript
 /**
@@ -62,10 +64,10 @@ more).  `kd.Key` has the following API:
 kd.Key.prototype.down = function (opt_handler)
 ````
 
-`opt_handler` fires for every tick where there is a key is held down.  There is
+`opt_handler` fires for every tick where the key is held down.  There is
 no early delay, as described in the ASCII graph above.  Calling this method for
-a key again will overwrite the previous keyhandler - only one handler function
-is allowed per key.
+a key again will overwrite the previous `opt_handler` - only one handler
+function is allowed per key.
 
 If `opt_handler` is omitted, this function invokes whatever handler function
 was previously bound with `kd.Key#down`.
@@ -78,7 +80,8 @@ kd.Key.prototype.up = function (opt_handler)
 ````
 
 `opt_handler` fires when the key is released by the user.  As with
-`kd.Key#down`, only one handler function is allowed.
+`kd.Key#down`, only one handler function is allowed.  Unlike `kd.Key#down`,
+`opt_handler` does not fire continuously — only once when the key is released.
 
 If `opt_handler` is omitted, this function invokes whatever handler function
 was previously bound with `kd.Key#up`.
@@ -107,6 +110,8 @@ Unbinds the function handler that was bound with `kd.Key#down`.
 kd.Key.prototype.unbindUp = function ()
 ````
 
+Unbinds the function handler that was bound with `kd.Key#up`.
+
 ### Example
 
 ````javascript
@@ -118,14 +123,12 @@ kd.B.down(function () {
 kd.B.unbindDown();
 ````
 
-Unbinds the function handler that was bound with `kd.Key#up`.
-
 -------------------------------------------------------------------------------
 
 ### Helper methods
 
-The `kd` Object has helper methods and properties associated with it, and they
-are represented by camelCase property names.
+The `kd` Object has helper methods attached to it, and they are represented by
+camelCase property names.
 
 ````javascript
 kd.tick = function ()
@@ -173,8 +176,8 @@ kd.run(function () {
 
 ### Getting the code
 
-If you want to keep things simple, all you needo is either `dist/keydrown.js`
-or `dist/keydrown.min.js` from this Git repo.  Alternatively, you can install
+If you want to keep things simple, all you need is either `dist/keydrown.js` or
+`dist/keydrown.min.js` from this Git repo.  Alternatively, you can install
 Keydrown via [Bower](http://bower.io/):
 
 ````
