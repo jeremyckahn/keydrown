@@ -30,6 +30,7 @@ var KEY_MAP = {
   ,'X': 88
   ,'Y': 89
   ,'Z': 90
+  ,'ENTER': 13
   ,'ESC': 27
   ,'SPACE': 32
   ,'LEFT': 37

@@ -61,7 +61,13 @@ var kd = (function (keysDown) {
   });
 
   util.documentOn('keydown', function (evt) {
-    util.pushUnique(keysDown, evt.keyCode);
+    var keyCode = evt.keyCode;
+    var keyName = TRANSPOSED_KEY_MAP[keyCode];
+    var isNew = util.pushUnique(keysDown, keyCode);
+
+    if (isNew && kd[keyName]) {
+      kd[keyName].press();
+    }
   });
 
   util.documentOn('keyup', function (evt) {

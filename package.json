@@ -1,6 +1,6 @@
 {
   "name": "Keydrown",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "http://jeremyckahn.github.com/keydrown",
   "author": "Jeremy Kahn <jeremyckahn@gmail.com>",
   "description": "A JavaScript key state handler for web apps",

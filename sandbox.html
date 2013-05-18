@@ -25,6 +25,10 @@
       log('The space bar was released!');
     });
 
+    kd.ENTER.press(function () {
+      log('The enter key was pressed!');
+    });
+
     kd.ESC.down(function () {
       log('Stopping the run loop...');
       kd.stop();

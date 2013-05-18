@@ -1,4 +1,4 @@
-/*! Keydrown - v0.1.2 - 2013-04-28 - http://jeremyckahn.github.com/keydrown */
+/*! Keydrown - v0.1.3 - 2013-05-18 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -66,11 +66,15 @@ var util = (function () {
    *
    * @param {Array} arr
    * @param {*} val
+   * @return {boolean} Whether or not the value was added to the array.
    */
   util.pushUnique = function (arr, val) {
     if (indexOf(arr, val) === -1) {
       arr.push(val);
+      return true;
     }
+
+    return false;
   };
 
 
@@ -159,6 +163,7 @@ var KEY_MAP = {
   ,'X': 88
   ,'Y': 89
   ,'Z': 90
+  ,'ENTER': 13
   ,'ESC': 27
   ,'SPACE': 32
   ,'LEFT': 37
@@ -207,31 +212,57 @@ var Key = (function () {
   Key.prototype._upHandler = util.noop;
 
 
+  /*!
+   * The function to be invoked when the key is pressed.
+   *
+   * @type {function}
+   */
+  Key.prototype._pressHandler = util.noop;
+
+
+  /*!
+   * Private helper function that binds or invokes a hander for `down`, `up', or `press` for a `Key`.
+   *
+   * @param {Key} key
+   * @param {string} handlerName
+   * @param {function=} opt_handler If omitted, the handler is invoked.
+   */
+  function bindOrFire (key, handlerName, opt_handler) {
+    if (opt_handler) {
+      key[handlerName] = opt_handler;
+    } else {
+      key[handlerName]();
+    }
+  }
+
+
   /**
    * Bind a function to be called when the key is held down.
    *
-   * @param {function} opt_handler The function to be called when the key is held down.  If omitted, this function invokes whatever handler was previously bound.
+   * @param {function=} opt_handler The function to be called when the key is held down.  If omitted, this function invokes whatever handler was previously bound.
    */
   Key.prototype.down = function (opt_handler) /*!*/ {
-    if (opt_handler) {
-      this._downHandler = opt_handler;
-    } else {
-      this._downHandler();
-    }
+    bindOrFire(this, '_downHandler', opt_handler);
   };
 
 
   /**
    * Bind a function to be called when the key is released.
    *
-   * @param {function} opt_handler The function to be called when the key is released.  If omitted, this function invokes whatever handler was previously bound.
+   * @param {function=} opt_handler The function to be called when the key is released.  If omitted, this function invokes whatever handler was previously bound.
    */
   Key.prototype.up = function (opt_handler) /*!*/ {
-    if (opt_handler) {
-      this._upHandler = opt_handler;
-    } else {
-      this._upHandler();
-    }
+    bindOrFire(this, '_upHandler', opt_handler);
+  };
+
+
+  /**
+   * Bind a function to be called when the key is pressed.  This handler will not fire again until the key is released — it does not repeat.
+   *
+   * @param {function=} opt_handler The function to be called once when the key is pressed.  If omitted, this function invokes whatever handler was previously bound.
+   */
+  Key.prototype.press = function (opt_handler) /*!*/ {
+    bindOrFire(this, '_pressHandler', opt_handler);
   };
 
 
@@ -248,6 +279,14 @@ var Key = (function () {
    */
   Key.prototype.unbindUp = function () /*!*/ {
     this._upHandler = util.noop;
+  };
+
+
+  /**
+   * Remove the handler that was bound with [`kd.Key#press`](#press).
+   */
+  Key.prototype.unbindPress = function () /*!*/ {
+    this._pressHandler = util.noop;
   };
 
   return Key;
@@ -317,7 +356,13 @@ var kd = (function (keysDown) {
   });
 
   util.documentOn('keydown', function (evt) {
-    util.pushUnique(keysDown, evt.keyCode);
+    var keyCode = evt.keyCode;
+    var keyName = TRANSPOSED_KEY_MAP[keyCode];
+    var isNew = util.pushUnique(keysDown, keyCode);
+
+    if (isNew && kd[keyName]) {
+      kd[keyName].press();
+    }
   });
 
   util.documentOn('keyup', function (evt) {

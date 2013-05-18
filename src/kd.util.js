@@ -63,11 +63,15 @@ var util = (function () {
    *
    * @param {Array} arr
    * @param {*} val
+   * @return {boolean} Whether or not the value was added to the array.
    */
   util.pushUnique = function (arr, val) {
     if (indexOf(arr, val) === -1) {
       arr.push(val);
+      return true;
     }
+
+    return false;
   };
 
 

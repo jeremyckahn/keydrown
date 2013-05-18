@@ -86,6 +86,20 @@ kd.Key.prototype.up = function (opt_handler)
 If `opt_handler` is omitted, this function invokes whatever handler function
 was previously bound with `kd.Key#up`.
 
+````javascript
+/**
+ * @param {function=} opt_handler
+ */
+kd.Key.prototype.press = function (opt_handler)
+````
+
+`opt_handler` fires once when the key is pressed by the user.  Only one handler
+function is allowed.  This is not a repeating state — it only fires once until
+the user releases the key and presses it again.
+
+If `opt_handler` is omitted, this function invokes whatever handler function
+was previously bound with `kd.Key#press`.
+
 ### Example
 
 ````javascript
@@ -95,6 +109,10 @@ kd.B.down(function () {
 
 kd.B.up(function () {
   console.log('The "B" key was released!');
+});
+
+kd.SPACE.press(function () {
+  console.log('The space bar was pressed!');
 });
 ````
 
@@ -111,6 +129,12 @@ kd.Key.prototype.unbindUp = function ()
 ````
 
 Unbinds the function handler that was bound with `kd.Key#up`.
+
+````javascript
+kd.Key.prototype.unbindPress = function ()
+````
+
+Unbinds the function handler that was bound with `kd.Key#press`.
 
 ### Example
 
