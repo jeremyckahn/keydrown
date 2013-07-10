@@ -1,4 +1,4 @@
-/*! Keydrown - v0.1.3 - 2013-05-18 - http://jeremyckahn.github.com/keydrown */
+/*! Keydrown - v0.1.4 - 2013-07-10 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -12,7 +12,7 @@ var util = (function () {
   util.forEach = function (obj, iterator) {
     var prop;
     for (prop in obj) {
-      if (obj.hasOwnProperty([prop])) {
+      if (obj.hasOwnProperty(prop)) {
         iterator(obj[prop], prop);
       }
     }

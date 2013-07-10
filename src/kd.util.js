@@ -9,7 +9,7 @@ var util = (function () {
   util.forEach = function (obj, iterator) {
     var prop;
     for (prop in obj) {
-      if (obj.hasOwnProperty([prop])) {
+      if (obj.hasOwnProperty(prop)) {
         iterator(obj[prop], prop);
       }
     }
