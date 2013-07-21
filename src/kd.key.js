@@ -11,7 +11,7 @@ var Key = (function () {
    * Represents a key on the keyboard.  You'll never actually call this method directly; Key Objects for every key that Keydrown supports are created for you when the library is initialized (as in, when the file is loaded).  You will, however, use the `prototype` methods below to bind functions to key states.
    * @constructor
    */
-  function Key () /*!*/ {}
+  function Key () {}
 
 
   /*!
@@ -59,7 +59,7 @@ var Key = (function () {
    *
    * @param {function=} opt_handler The function to be called when the key is held down.  If omitted, this function invokes whatever handler was previously bound.
    */
-  Key.prototype.down = function (opt_handler) /*!*/ {
+  Key.prototype.down = function (opt_handler) {
     bindOrFire(this, '_downHandler', opt_handler);
   };
 
@@ -69,7 +69,7 @@ var Key = (function () {
    *
    * @param {function=} opt_handler The function to be called when the key is released.  If omitted, this function invokes whatever handler was previously bound.
    */
-  Key.prototype.up = function (opt_handler) /*!*/ {
+  Key.prototype.up = function (opt_handler) {
     bindOrFire(this, '_upHandler', opt_handler);
   };
 
@@ -79,7 +79,7 @@ var Key = (function () {
    *
    * @param {function=} opt_handler The function to be called once when the key is pressed.  If omitted, this function invokes whatever handler was previously bound.
    */
-  Key.prototype.press = function (opt_handler) /*!*/ {
+  Key.prototype.press = function (opt_handler) {
     bindOrFire(this, '_pressHandler', opt_handler);
   };
 
@@ -87,7 +87,7 @@ var Key = (function () {
   /**
    * Remove the handler that was bound with [`kd.Key#down`](#down).
    */
-  Key.prototype.unbindDown = function () /*!*/ {
+  Key.prototype.unbindDown = function () {
     this._downHandler = util.noop;
   };
 
@@ -95,7 +95,7 @@ var Key = (function () {
   /**
    * Remove the handler that was bound with [`kd.Key#up`](#up).
    */
-  Key.prototype.unbindUp = function () /*!*/ {
+  Key.prototype.unbindUp = function () {
     this._upHandler = util.noop;
   };
 
@@ -103,7 +103,7 @@ var Key = (function () {
   /**
    * Remove the handler that was bound with [`kd.Key#press`](#press).
    */
-  Key.prototype.unbindPress = function () /*!*/ {
+  Key.prototype.unbindPress = function () {
     this._pressHandler = util.noop;
   };
 

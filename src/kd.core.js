@@ -11,7 +11,7 @@ var kd = (function (keysDown) {
   /**
    * Evaluate which keys are held down and invoke their handler functions.
    */
-  kd.tick = function () /*!*/ {
+  kd.tick = function () {
     var i, len = keysDown.length;
     for (i = 0; i < len; i++) {
       var keyCode = keysDown[i];
@@ -29,7 +29,7 @@ var kd = (function (keysDown) {
    *
    * @param {function} handler The function to call on every tick.  You almost certainly want to call `kd.tick` in this function.
    */
-  kd.run = function (handler) /*!*/ {
+  kd.run = function (handler) {
     isRunning = true;
 
     util.requestAnimationFrame.call(window, function () {
@@ -46,7 +46,7 @@ var kd = (function (keysDown) {
   /**
    * Cancels the loop created by [`kd.run`](#run).
    */
-  kd.stop = function () /*!*/ {
+  kd.stop = function () {
     isRunning = false;
   };
 

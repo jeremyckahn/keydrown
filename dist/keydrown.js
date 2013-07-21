@@ -1,4 +1,4 @@
-/*! Keydrown - v0.1.4 - 2013-07-10 - http://jeremyckahn.github.com/keydrown */
+/*! Keydrown - v0.1.5 - 2013-07-20 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -193,7 +193,7 @@ var Key = (function () {
    * Represents a key on the keyboard.  You'll never actually call this method directly; Key Objects for every key that Keydrown supports are created for you when the library is initialized (as in, when the file is loaded).  You will, however, use the `prototype` methods below to bind functions to key states.
    * @constructor
    */
-  function Key () /*!*/ {}
+  function Key () {}
 
 
   /*!
@@ -241,7 +241,7 @@ var Key = (function () {
    *
    * @param {function=} opt_handler The function to be called when the key is held down.  If omitted, this function invokes whatever handler was previously bound.
    */
-  Key.prototype.down = function (opt_handler) /*!*/ {
+  Key.prototype.down = function (opt_handler) {
     bindOrFire(this, '_downHandler', opt_handler);
   };
 
@@ -251,7 +251,7 @@ var Key = (function () {
    *
    * @param {function=} opt_handler The function to be called when the key is released.  If omitted, this function invokes whatever handler was previously bound.
    */
-  Key.prototype.up = function (opt_handler) /*!*/ {
+  Key.prototype.up = function (opt_handler) {
     bindOrFire(this, '_upHandler', opt_handler);
   };
 
@@ -261,7 +261,7 @@ var Key = (function () {
    *
    * @param {function=} opt_handler The function to be called once when the key is pressed.  If omitted, this function invokes whatever handler was previously bound.
    */
-  Key.prototype.press = function (opt_handler) /*!*/ {
+  Key.prototype.press = function (opt_handler) {
     bindOrFire(this, '_pressHandler', opt_handler);
   };
 
@@ -269,7 +269,7 @@ var Key = (function () {
   /**
    * Remove the handler that was bound with [`kd.Key#down`](#down).
    */
-  Key.prototype.unbindDown = function () /*!*/ {
+  Key.prototype.unbindDown = function () {
     this._downHandler = util.noop;
   };
 
@@ -277,7 +277,7 @@ var Key = (function () {
   /**
    * Remove the handler that was bound with [`kd.Key#up`](#up).
    */
-  Key.prototype.unbindUp = function () /*!*/ {
+  Key.prototype.unbindUp = function () {
     this._upHandler = util.noop;
   };
 
@@ -285,7 +285,7 @@ var Key = (function () {
   /**
    * Remove the handler that was bound with [`kd.Key#press`](#press).
    */
-  Key.prototype.unbindPress = function () /*!*/ {
+  Key.prototype.unbindPress = function () {
     this._pressHandler = util.noop;
   };
 
@@ -306,7 +306,7 @@ var kd = (function (keysDown) {
   /**
    * Evaluate which keys are held down and invoke their handler functions.
    */
-  kd.tick = function () /*!*/ {
+  kd.tick = function () {
     var i, len = keysDown.length;
     for (i = 0; i < len; i++) {
       var keyCode = keysDown[i];
@@ -324,7 +324,7 @@ var kd = (function (keysDown) {
    *
    * @param {function} handler The function to call on every tick.  You almost certainly want to call `kd.tick` in this function.
    */
-  kd.run = function (handler) /*!*/ {
+  kd.run = function (handler) {
     isRunning = true;
 
     util.requestAnimationFrame.call(window, function () {
@@ -341,7 +341,7 @@ var kd = (function (keysDown) {
   /**
    * Cancels the loop created by [`kd.run`](#run).
    */
-  kd.stop = function () /*!*/ {
+  kd.stop = function () {
     isRunning = false;
   };
 
