@@ -6,6 +6,6 @@ if (typeof module === "object" && typeof module.exports === "object") {
   define(function () {
     return kd;
   });
+} else {
+  window.kd = kd;
 }
-
-window.kd = kd;

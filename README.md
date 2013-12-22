@@ -1,3 +1,4 @@
+
 # Keydrown
 
 ## A JavaScript key state handler for web apps
@@ -160,7 +161,7 @@ kd.tick = function ()
 
 Check the states of all of the keys and invoke the necessary key handlers.  You
 should call this once and only once somewhere in your run loop.  *If you don't
-have this somewhere in your run loop, Keydrown won't do anything.*
+call `tick` somewhere in your run loop, Keydrown won't do anything.*
 
 ````javascript
 /**
@@ -169,9 +170,9 @@ have this somewhere in your run loop, Keydrown won't do anything.*
 kd.run = function (handler)
 ````
 
-A basic run loop.  If your application already has a run loop, you don't need
-this.  `kd.run` uses `requestAnimationFrame` if it is available, and falls back
-to a `setTimeout` loop if it is not.
+A basic run loop.  *If your application already has a run loop, you don't need
+this.*  `kd.run` uses `requestAnimationFrame` if it is available, and falls
+back to a `setTimeout` loop if it is not.
 
 ````javascript
 kd.stop = function ()
@@ -182,6 +183,10 @@ Cancels the run loop started by `kd.run`.
 ### Example
 
 ````javascript
+kd.run(function () {
+  kd.tick();
+});
+
 kd.SPACE.down(function () {
   console.log('The space bar is being held down!');
 });
@@ -189,10 +194,6 @@ kd.SPACE.down(function () {
 kd.ESC.down(function () {
   console.log('Canceling the loop.');
   kd.stop();
-});
-
-kd.run(function () {
-  kd.tick();
 });
 ````
 
@@ -210,9 +211,9 @@ $: bower install keydrown
 
 ### Module compatibility
 
-Keydrown always creates the `kd` browser global, but it can also be loaded as
-an AMD module or as a CommonJS/Node-like module (through a tool like
-[Browserify](http://browserify.org/)).
+If loaded directly (without a script loader), Keydrown creates the `kd` browser
+global.  However, it can also be loaded as an AMD module or as a CommonJS
+module (through a tool like [Browserify](http://browserify.org/)).
 
 ````javascript
 // Loaded with an AMD loader (such as Require.js)
@@ -235,14 +236,30 @@ kd.run(function () {
 ### Browser compatibility
 
 Keydrown supports all modern browsers, as well as Internet Explorer 7 and up
-(please see the [note below](#known-issues) about IE compatibility).
+(please see the [note below](#limitations) about IE compatibility).
 
-### Known issues
+### Limitations
 
 Keydrown has a feature where when the user blurs the browser window (for
 example, switching to another application or tab), the key state is reset and
-"down" handlers stop firing.  This functionality is not supported in IE 7 and
-8, as there doesn't seem to be a way to bind to the `window`'s `blur` event
-correctly in those browsers.  You can assign a function to `window.onblur`, but
-that function will only fire once IE regains focus, which is not sufficient for
-Keydrown's reset-on-blur functionality.
+"down" handlers stop firing.  On other words, keys aren't considered "down" if
+the user is not focused on the browser window.  This functionality is not
+supported in IE 7 and 8, as there doesn't seem to be a way to bind to the
+`window`'s `blur` event correctly in those browsers.  You can assign a function
+to `window.onblur`, but that function will only fire once IE regains focus,
+which is not sufficient for Keydrown's reset-on-blur functionality.
+
+### Keydrown in the wild
+
+Keydrown has been used in several interesting projects:
+
+* [A Node-powered helicopter](https://github.com/isery/node-copter-webapp)
+* [PeepsQuest, a game development tutorial](http://peepsquest.com/tutorials/isometric-placing-avatar.html)
+* [A role playing game](https://github.com/quintenpalmer/attempt)
+* [A WebRTC controlled car](https://github.com/PosMich/WC-Car)
+
+### License
+
+Keydrown is distibuted under the [MIT
+license](http://opensource.org/licenses/MIT).  You are encouraged to use and
+modify the code to suit your needs, as well as redistribute it.

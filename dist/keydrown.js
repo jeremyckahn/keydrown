@@ -1,4 +1,4 @@
-/*! Keydrown - v0.1.5 - 2013-07-20 - http://jeremyckahn.github.com/keydrown */
+/*! Keydrown - v1.0.0 - 2013-12-22 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -396,8 +396,8 @@ if (typeof module === "object" && typeof module.exports === "object") {
   define(function () {
     return kd;
   });
+} else {
+  window.kd = kd;
 }
-
-window.kd = kd;
 
 } (window));
