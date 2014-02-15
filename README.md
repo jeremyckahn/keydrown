@@ -101,6 +101,12 @@ the user releases the key and presses it again.
 If `opt_handler` is omitted, this function invokes whatever handler function
 was previously bound with `kd.Key#press`.
 
+````javascript
+kd.Key.prototype.isDown = function()
+````
+
+Returns `true` if the key is currently pressed, otherwise returns false.
+
 ### Example
 
 ````javascript
@@ -115,6 +121,10 @@ kd.B.up(function () {
 kd.SPACE.press(function () {
   console.log('The space bar was pressed!');
 });
+
+if (kd.LEFT.isDown()) {
+  console.log('The left arrow key is being held down!')
+}
 ````
 
 -------------------------------------------------------------------------------
