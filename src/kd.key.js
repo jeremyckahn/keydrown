@@ -57,6 +57,16 @@ var Key = (function () {
 
 
   /**
+   * Returns whether the key is currently pressed or not.
+   *
+   * @return {boolean} True if the key is down, otherwise false.
+   */
+  Key.prototype.isDown = function () {
+    return util.indexOf(keysDown, this.keyCode) !== -1;
+  };
+
+
+  /**
    * Bind a function to be called when the key is held down.
    *
    * @param {function=} opt_handler The function to be called when the key is held down.  If omitted, this function invokes whatever handler was previously bound.
