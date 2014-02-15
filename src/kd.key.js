@@ -9,6 +9,8 @@ var Key = (function () {
 
   /**
    * Represents a key on the keyboard.  You'll never actually call this method directly; Key Objects for every key that Keydrown supports are created for you when the library is initialized (as in, when the file is loaded).  You will, however, use the `prototype` methods below to bind functions to key states.
+   *
+   * @param {number} keyCode The keycode of the key.
    * @constructor
    */
   function Key (keyCode) {
