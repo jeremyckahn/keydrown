@@ -57,7 +57,7 @@ var kd = (function (keysDown) {
 
   // Initialize the KEY Objects
   util.forEach(KEY_MAP, function (keyCode, keyName) {
-    kd[keyName] = new Key();
+    kd[keyName] = new Key(keyCode);
   });
 
   util.documentOn('keydown', function (evt) {

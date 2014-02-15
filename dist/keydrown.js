@@ -1,4 +1,4 @@
-/*! keydrown - v1.0.1 - 2014-02-14 - http://jeremyckahn.github.com/keydrown */
+/*! keydrown - v1.1.0 - 2014-02-15 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -191,9 +191,13 @@ var Key = (function () {
 
   /**
    * Represents a key on the keyboard.  You'll never actually call this method directly; Key Objects for every key that Keydrown supports are created for you when the library is initialized (as in, when the file is loaded).  You will, however, use the `prototype` methods below to bind functions to key states.
+   *
+   * @param {number} keyCode The keyCode of the key.
    * @constructor
    */
-  function Key () {}
+  function Key (keyCode) {
+    this.keyCode = keyCode;
+  }
 
 
   /*!
@@ -234,6 +238,16 @@ var Key = (function () {
       key[handlerName]();
     }
   }
+
+
+  /**
+   * Returns whether the key is currently pressed or not.
+   *
+   * @return {boolean} True if the key is down, otherwise false.
+   */
+  Key.prototype.isDown = function () {
+    return util.indexOf(keysDown, this.keyCode) !== -1;
+  };
 
 
   /**
@@ -352,7 +366,7 @@ var kd = (function (keysDown) {
 
   // Initialize the KEY Objects
   util.forEach(KEY_MAP, function (keyCode, keyName) {
-    kd[keyName] = new Key();
+    kd[keyName] = new Key(keyCode);
   });
 
   util.documentOn('keydown', function (evt) {
