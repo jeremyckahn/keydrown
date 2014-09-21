@@ -1,4 +1,4 @@
-/*! keydrown - v1.1.1 - 2014-09-02 - http://jeremyckahn.github.com/keydrown */
+/*! keydrown - v1.1.2 - 2014-09-21 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -392,6 +392,14 @@ var kd = (function (keysDown) {
   // Stop firing the "down" handlers if the user loses focus of the browser
   // window.
   util.documentOn('blur', function (evt) {
+    // Fire the "up" handler for each key that is currently held down
+    util.forEach(keysDown, function (keyCode) {
+      var mappedKey = TRANSPOSED_KEY_MAP[keyCode];
+      if (mappedKey) {
+        kd[mappedKey].up();
+      }
+    });
+
     keysDown.length = 0;
   });
 
