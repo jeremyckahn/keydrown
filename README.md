@@ -167,11 +167,11 @@ may differ across browsers, particularly older ones.
 ````javascript
 kd.A.down(function (evt) {
   if (evt.shiftKey) {
-    console.log('The shift key is being held down');
+    console.log('The shift key is being held down!');
   }
 
   if (evt.ctrlKey) {
-    console.log('The ctrl key is being held down');
+    console.log('The ctrl key is being held down!');
   }
 });
 ````
