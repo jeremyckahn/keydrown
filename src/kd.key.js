@@ -15,6 +15,7 @@ var Key = (function () {
    */
   function Key (keyCode) {
     this.keyCode = keyCode;
+    this.cachedKeypressEvent = null;
   }
 
 
@@ -75,7 +76,7 @@ var Key = (function () {
    * @param {function=} opt_handler The function to be called when the key is held down.  If omitted, this function invokes whatever handler was previously bound.
    */
   Key.prototype.down = function (opt_handler) {
-    bindOrFire(this, '_downHandler', opt_handler);
+    bindOrFire(this, '_downHandler', opt_handler, this.cachedKeypressEvent);
   };
 
 
@@ -97,6 +98,7 @@ var Key = (function () {
    * @param {KeyboardEvent=} opt_evt If this function is being called by the `keydown` event handler, this is the raw `KeyboardEvent` Object provided from the browser.  This should generally not be provided by client code.
    */
   Key.prototype.press = function (opt_handler, opt_evt) {
+    this.cachedKeypressEvent = opt_evt;
     bindOrFire(this, '_pressHandler', opt_handler, opt_evt);
   };
 
