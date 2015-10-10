@@ -259,7 +259,7 @@ code {
     var isNew = util.pushUnique(keysDown, keyCode);
 
     if (isNew &amp;&amp; kd[keyName]) {
-      kd[keyName].press();
+      kd[keyName].press(null, evt);
     }
   });
 
@@ -268,7 +268,7 @@ code {
 
     var keyName = TRANSPOSED_KEY_MAP[keyCode];
     if (keyName) {
-      kd[keyName].up();
+      kd[keyName].up(null, evt);
     }
   });
 
