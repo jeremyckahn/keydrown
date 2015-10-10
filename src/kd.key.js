@@ -49,7 +49,7 @@ var Key = (function () {
    * @param {Key} key
    * @param {string} handlerName
    * @param {function=} opt_handler If omitted, the handler is invoked.
-   * @param {KeyboardEvent=} opt_evt If this function is being called by a keyboard event handler, this is the raw `KeyboardEvent` Object provided from the browser.
+   * @param {KeyboardEvent=} opt_evt If this function is being called by a keyboard event handler, this is the raw KeyboardEvent Object provided from the browser.
    */
   function bindOrFire (key, handlerName, opt_handler, opt_evt) {
     if (opt_handler) {
@@ -84,7 +84,7 @@ var Key = (function () {
    * Bind a function to be called when the key is released.
    *
    * @param {function=} opt_handler The function to be called when the key is released.  If omitted, this function invokes whatever handler was previously bound.
-   * @param {KeyboardEvent=} opt_evt If this function is being called by the `keyup` event handler, this is the raw `KeyboardEvent` Object provided from the browser.  This should generally not be provided by client code.
+   * @param {KeyboardEvent=} opt_evt If this function is being called by the keyup event handler, this is the raw KeyboardEvent Object provided from the browser.  This should generally not be provided by client code.
    */
   Key.prototype.up = function (opt_handler, opt_evt) {
     bindOrFire(this, '_upHandler', opt_handler, opt_evt);
@@ -95,7 +95,7 @@ var Key = (function () {
    * Bind a function to be called when the key is pressed.  This handler will not fire again until the key is released — it does not repeat.
    *
    * @param {function=} opt_handler The function to be called once when the key is pressed.  If omitted, this function invokes whatever handler was previously bound.
-   * @param {KeyboardEvent=} opt_evt If this function is being called by the `keydown` event handler, this is the raw `KeyboardEvent` Object provided from the browser.  This should generally not be provided by client code.
+   * @param {KeyboardEvent=} opt_evt If this function is being called by the keydown event handler, this is the raw KeyboardEvent Object provided from the browser.  This should generally not be provided by client code.
    */
   Key.prototype.press = function (opt_handler, opt_evt) {
     this.cachedKeypressEvent = opt_evt;
