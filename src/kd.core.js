@@ -66,7 +66,7 @@ var kd = (function (keysDown) {
     var isNew = util.pushUnique(keysDown, keyCode);
 
     if (isNew && kd[keyName]) {
-      kd[keyName].press();
+      kd[keyName].press(null, evt);
     }
   });
 
@@ -75,7 +75,7 @@ var kd = (function (keysDown) {
 
     var keyName = TRANSPOSED_KEY_MAP[keyCode];
     if (keyName) {
-      kd[keyName].up();
+      kd[keyName].up(null, evt);
     }
   });
 
