@@ -129,6 +129,24 @@ if (kd.LEFT.isDown()) {
 
 -------------------------------------------------------------------------------
 
+`down`, `up`, and `press` functions also provide the raw `Keyboard` event
+Object created by the corresponding browser event.  The schema of this Object
+may differ across browsers, particularly older ones.
+
+````javascript
+kd.A.down(function (evt) {
+  if (evt.shiftKey) {
+    console.log('The shift key is being held down!');
+  }
+
+  if (evt.ctrlKey) {
+    console.log('The ctrl key is being held down!');
+  }
+});
+````
+
+-------------------------------------------------------------------------------
+
 ````javascript
 kd.Key.prototype.unbindDown = function ()
 ````
@@ -156,24 +174,6 @@ kd.B.down(function () {
 
 // Now pressing the "B" key won't do anything
 kd.B.unbindDown();
-````
-
--------------------------------------------------------------------------------
-
-`down`, `up`, and `press` functions also provide the raw `Keyboard` event
-Object created by the corresponding browser event.  The schema of this Object
-may differ across browsers, particularly older ones.
-
-````javascript
-kd.A.down(function (evt) {
-  if (evt.shiftKey) {
-    console.log('The shift key is being held down!');
-  }
-
-  if (evt.ctrlKey) {
-    console.log('The ctrl key is being held down!');
-  }
-});
 ````
 
 -------------------------------------------------------------------------------
