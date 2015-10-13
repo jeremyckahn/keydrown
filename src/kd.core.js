@@ -64,21 +64,27 @@ var kd = (function (keysDown) {
     var keyCode = evt.keyCode;
     var keyName = TRANSPOSED_KEY_MAP[keyCode];
     var isNew = util.pushUnique(keysDown, keyCode);
-
     var key = kd[keyName];
 
     if (key) {
       var cachedKeypressEvent = key.cachedKeypressEvent || {};
 
+      // If a modifier key was held down the last time that this button was
+      // pressed, and it is pressed again without the modifier key being
+      // released, it is considered a newly-pressed key.  This is to work
+      // around the fact that the "keyup" event does not fire for the modified
+      // key until the modifier button is also released, which poses a problem
+      // for repeated, modified key presses such as hitting ctrl/meta+Z for
+      // rapid "undo" actions.
       if (cachedKeypressEvent.ctrlKey ||
           cachedKeypressEvent.shiftKey ||
           cachedKeypressEvent.metaKey) {
         isNew = true;
       }
-    }
 
-    if (isNew && key) {
-      key.press(null, evt);
+      if (isNew) {
+        key.press(null, evt);
+      }
     }
   });
 
