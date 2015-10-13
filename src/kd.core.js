@@ -65,8 +65,20 @@ var kd = (function (keysDown) {
     var keyName = TRANSPOSED_KEY_MAP[keyCode];
     var isNew = util.pushUnique(keysDown, keyCode);
 
-    if (isNew && kd[keyName]) {
-      kd[keyName].press(null, evt);
+    var key = kd[keyName];
+
+    if (key) {
+      var cachedKeypressEvent = key.cachedKeypressEvent || {};
+
+      if (cachedKeypressEvent.ctrlKey ||
+          cachedKeypressEvent.shiftKey ||
+          cachedKeypressEvent.metaKey) {
+        isNew = true;
+      }
+    }
+
+    if (isNew && key) {
+      key.press(null, evt);
     }
   });
 
