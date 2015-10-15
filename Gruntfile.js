@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-dox');
 
   var banner = [
@@ -66,6 +67,16 @@ module.exports = function(grunt) {
           'src/kd.core.js'
         ],
         dest: 'dist/doc'
+      }
+    },
+    bump: {
+      options: {
+        files: ['package.json', 'bower.json'],
+        commit: false,
+        createTag: false,
+        tagName: '%VERSION%',
+        tagMessage: 'Version %VERSION%',
+        push: false
       }
     }
   });
