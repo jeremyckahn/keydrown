@@ -2,6 +2,9 @@ var kd = (function (keysDown) {
 
   'use strict';
 
+  /**
+   * @class kd
+   */
   var kd = {};
   kd.Key = Key;
 
@@ -10,6 +13,7 @@ var kd = (function (keysDown) {
 
   /**
    * Evaluate which keys are held down and invoke their handler functions.
+   * @method tick
    */
   kd.tick = function () {
     var i, len = keysDown.length;
@@ -44,7 +48,8 @@ var kd = (function (keysDown) {
 
 
   /**
-   * Cancels the loop created by [`kd.run`](#run).
+   * Cancels the loop created by [run](#method_run).
+   * @method stop
    */
   kd.stop = function () {
     isRunning = false;
@@ -114,7 +119,5 @@ var kd = (function (keysDown) {
 
   return kd;
 
-/*!
- * The variables passed into the closure here are defined in kd.key.js.
- */ /*!*/
+ // The variables passed into the closure here are defined in kd.key.js.
 }(keysDown));
