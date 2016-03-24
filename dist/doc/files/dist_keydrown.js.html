@@ -1,3 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>dist/keydrown.js - Keydrown</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="Keydrown" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.2.2</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/kd.html">kd</a></li>
+                                <li><a href="../classes/kd.Key.html">kd.Key</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: dist/keydrown.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
 /*! keydrown - v1.2.2 - 2016-03-23 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
@@ -38,7 +121,7 @@ var util = (function () {
 
 
   /**
-   * Implementation of Array#indexOf because IE<9 doesn't support it.
+   * Implementation of Array#indexOf because IE&lt;9 doesn&#x27;t support it.
    *
    * @param {Array} arr
    * @param {*} val
@@ -50,7 +133,7 @@ var util = (function () {
     }
 
     var i, len = arr.length;
-    for (i = 0; i < len; i++) {
+    for (i = 0; i &lt; len; i++) {
       if (arr[i] === val) {
         return i;
       }
@@ -107,7 +190,7 @@ var util = (function () {
     if (window.addEventListener) {
       window.addEventListener(eventName, handler, false);
     } else if (document.attachEvent) {
-      document.attachEvent('on' + eventName, handler);
+      document.attachEvent(&#x27;on&#x27; + eventName, handler);
     }
   };
 
@@ -138,69 +221,69 @@ var util = (function () {
 /**
  * Lookup table of keys to keyCodes.
  *
- * @type {Object.<number>}
+ * @type {Object.&lt;number&gt;}
  */
 var KEY_MAP = {
-  'A': 65
-  ,'B': 66
-  ,'C': 67
-  ,'D': 68
-  ,'E': 69
-  ,'F': 70
-  ,'G': 71
-  ,'H': 72
-  ,'I': 73
-  ,'J': 74
-  ,'K': 75
-  ,'L': 76
-  ,'M': 77
-  ,'N': 78
-  ,'O': 79
-  ,'P': 80
-  ,'Q': 81
-  ,'R': 82
-  ,'S': 83
-  ,'T': 84
-  ,'U': 85
-  ,'V': 86
-  ,'W': 87
-  ,'X': 88
-  ,'Y': 89
-  ,'Z': 90
-  ,'ENTER': 13
-  ,'SHIFT': 16
-  ,'ESC': 27
-  ,'SPACE': 32
-  ,'LEFT': 37
-  ,'UP': 38
-  ,'RIGHT': 39
-  ,'DOWN': 40
-  ,'BACKSPACE': 8
-  ,'DELETE': 46
+  &#x27;A&#x27;: 65
+  ,&#x27;B&#x27;: 66
+  ,&#x27;C&#x27;: 67
+  ,&#x27;D&#x27;: 68
+  ,&#x27;E&#x27;: 69
+  ,&#x27;F&#x27;: 70
+  ,&#x27;G&#x27;: 71
+  ,&#x27;H&#x27;: 72
+  ,&#x27;I&#x27;: 73
+  ,&#x27;J&#x27;: 74
+  ,&#x27;K&#x27;: 75
+  ,&#x27;L&#x27;: 76
+  ,&#x27;M&#x27;: 77
+  ,&#x27;N&#x27;: 78
+  ,&#x27;O&#x27;: 79
+  ,&#x27;P&#x27;: 80
+  ,&#x27;Q&#x27;: 81
+  ,&#x27;R&#x27;: 82
+  ,&#x27;S&#x27;: 83
+  ,&#x27;T&#x27;: 84
+  ,&#x27;U&#x27;: 85
+  ,&#x27;V&#x27;: 86
+  ,&#x27;W&#x27;: 87
+  ,&#x27;X&#x27;: 88
+  ,&#x27;Y&#x27;: 89
+  ,&#x27;Z&#x27;: 90
+  ,&#x27;ENTER&#x27;: 13
+  ,&#x27;SHIFT&#x27;: 16
+  ,&#x27;ESC&#x27;: 27
+  ,&#x27;SPACE&#x27;: 32
+  ,&#x27;LEFT&#x27;: 37
+  ,&#x27;UP&#x27;: 38
+  ,&#x27;RIGHT&#x27;: 39
+  ,&#x27;DOWN&#x27;: 40
+  ,&#x27;BACKSPACE&#x27;: 8
+  ,&#x27;DELETE&#x27;: 46
 };
 
 
 /**
  * The transposed version of KEY_MAP.
  *
- * @type {Object.<string>}
+ * @type {Object.&lt;string&gt;}
  */
 var TRANSPOSED_KEY_MAP = util.getTranspose(KEY_MAP);
 
 /*!
- * @type Array.<string>
+ * @type Array.&lt;string&gt;
  */
 var keysDown = [];
 
 var Key = (function () {
 
-  'use strict';
+  &#x27;use strict&#x27;;
 
   /**
-   * Represents a key on the keyboard.  You'll never actually call this method
+   * Represents a key on the keyboard.  You&#x27;ll never actually call this method
    * directly; Key Objects for every key that Keydrown supports are created for
    * you when the library is initialized (as in, when the file is loaded).  You
-   * will, however, use the `prototype` methods below to bind functions to key
+   * will, however, use the &#x60;prototype&#x60; methods below to bind functions to key
    * states.
    *
    * @param {number} keyCode The keyCode of the key.
@@ -238,8 +321,8 @@ var Key = (function () {
 
 
   /*!
-   * Private helper function that binds or invokes a hander for `down`, `up',
-   * or `press` for a `Key`.
+   * Private helper function that binds or invokes a hander for &#x60;down&#x60;, &#x60;up&#x27;,
+   * or &#x60;press&#x60; for a &#x60;Key&#x60;.
    *
    * @param {Key} key
    * @param {string} handlerName
@@ -277,7 +360,7 @@ var Key = (function () {
    * previously bound.
    */
   Key.prototype.down = function (opt_handler) {
-    bindOrFire(this, '_downHandler', opt_handler, this.cachedKeypressEvent);
+    bindOrFire(this, &#x27;_downHandler&#x27;, opt_handler, this.cachedKeypressEvent);
   };
 
 
@@ -293,7 +376,7 @@ var Key = (function () {
    * the browser.  This should generally not be provided by client code.
    */
   Key.prototype.up = function (opt_handler, opt_evt) {
-    bindOrFire(this, '_upHandler', opt_handler, opt_evt);
+    bindOrFire(this, &#x27;_upHandler&#x27;, opt_handler, opt_evt);
   };
 
 
@@ -311,13 +394,13 @@ var Key = (function () {
    */
   Key.prototype.press = function (opt_handler, opt_evt) {
     this.cachedKeypressEvent = opt_evt;
-    bindOrFire(this, '_pressHandler', opt_handler, opt_evt);
+    bindOrFire(this, &#x27;_pressHandler&#x27;, opt_handler, opt_evt);
   };
 
 
   /**
-   * Remove the handler that was bound with `{{#crossLink
-   * "kd.Key/down:method"}}{{/crossLink}}`.
+   * Remove the handler that was bound with &#x60;{{#crossLink
+   * &quot;kd.Key/down:method&quot;}}{{/crossLink}}&#x60;.
    * @method unbindDown
    */
   Key.prototype.unbindDown = function () {
@@ -326,8 +409,8 @@ var Key = (function () {
 
 
   /**
-   * Remove the handler that was bound with `{{#crossLink
-   * "kd.Key/up:method"}}{{/crossLink}}`.
+   * Remove the handler that was bound with &#x60;{{#crossLink
+   * &quot;kd.Key/up:method&quot;}}{{/crossLink}}&#x60;.
    * @method unbindUp
    */
   Key.prototype.unbindUp = function () {
@@ -336,8 +419,8 @@ var Key = (function () {
 
 
   /**
-   * Remove the handler that was bound with `{{#crossLink
-   * "kd.Key/press:method"}}{{/crossLink}}`.
+   * Remove the handler that was bound with &#x60;{{#crossLink
+   * &quot;kd.Key/press:method&quot;}}{{/crossLink}}&#x60;.
    * @method unbindPress
    */
   Key.prototype.unbindPress = function () {
@@ -350,7 +433,7 @@ var Key = (function () {
 
 var kd = (function (keysDown) {
 
-  'use strict';
+  &#x27;use strict&#x27;;
 
   /**
    * @class kd
@@ -372,7 +455,7 @@ var kd = (function (keysDown) {
    */
   kd.tick = function () {
     var i, len = keysDown.length;
-    for (i = 0; i < len; i++) {
+    for (i = 0; i &lt; len; i++) {
       var keyCode = keysDown[i];
 
       var keyName = TRANSPOSED_KEY_MAP[keyCode];
@@ -384,7 +467,7 @@ var kd = (function (keysDown) {
 
 
   /**
-   * A basic run loop.  `handler` gets called approximately 60 times a second.
+   * A basic run loop.  &#x60;handler&#x60; gets called approximately 60 times a second.
    *
    * @param {Function(number, number)} handler The callback function to call on
    * every tick.  You likely want to call [kd.tick](#method_tick) in this
@@ -429,7 +512,7 @@ var kd = (function (keysDown) {
     kd[keyName] = new Key(keyCode);
   });
 
-  util.documentOn('keydown', function (evt) {
+  util.documentOn(&#x27;keydown&#x27;, function (evt) {
     var keyCode = evt.keyCode;
     var keyName = TRANSPOSED_KEY_MAP[keyCode];
     var isNew = util.pushUnique(keysDown, keyCode);
@@ -441,10 +524,10 @@ var kd = (function (keysDown) {
       // If a modifier key was held down the last time that this button was
       // pressed, and it is pressed again without the modifier key being
       // released, it is considered a newly-pressed key.  This is to work
-      // around the fact that the "keyup" event does not fire for the modified
+      // around the fact that the &quot;keyup&quot; event does not fire for the modified
       // key until the modifier button is also released, which poses a problem
       // for repeated, modified key presses such as hitting ctrl/meta+Z for
-      // rapid "undo" actions.
+      // rapid &quot;undo&quot; actions.
       if (cachedKeypressEvent.ctrlKey ||
           cachedKeypressEvent.shiftKey ||
           cachedKeypressEvent.metaKey) {
@@ -457,7 +540,7 @@ var kd = (function (keysDown) {
     }
   });
 
-  util.documentOn('keyup', function (evt) {
+  util.documentOn(&#x27;keyup&#x27;, function (evt) {
     var keyCode = util.removeValue(keysDown, evt.keyCode);
 
     var keyName = TRANSPOSED_KEY_MAP[keyCode];
@@ -466,10 +549,10 @@ var kd = (function (keysDown) {
     }
   });
 
-  // Stop firing the "down" handlers if the user loses focus of the browser
+  // Stop firing the &quot;down&quot; handlers if the user loses focus of the browser
   // window.
-  util.documentOn('blur', function (evt) {
-    // Fire the "up" handler for each key that is currently held down
+  util.documentOn(&#x27;blur&#x27;, function (evt) {
+    // Fire the &quot;up&quot; handler for each key that is currently held down
     util.forEach(keysDown, function (keyCode) {
       var mappedKey = TRANSPOSED_KEY_MAP[keyCode];
       if (mappedKey) {
@@ -486,10 +569,10 @@ var kd = (function (keysDown) {
  // The variables passed into the closure here are defined in kd.key.js.
 }(keysDown));
 
-if (typeof module === "object" && typeof module.exports === "object") {
+if (typeof module === &quot;object&quot; &amp;&amp; typeof module.exports === &quot;object&quot;) {
   // Keydrown was loaded as a CommonJS module (by Browserify, for example).
   module.exports = kd;
-} else if (typeof define === "function" && define.amd) {
+} else if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
   // Keydrown was loaded as an AMD module.
   define(function () {
     return kd;
@@ -499,3 +582,22 @@ if (typeof module === "object" && typeof module.exports === "object") {
 }
 
 } (window));
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

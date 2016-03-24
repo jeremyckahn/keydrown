@@ -7,7 +7,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-bump');
-  grunt.loadNpmTasks('grunt-dox');
+  grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
   var banner = [
         '/*! <%= pkg.name %> - v<%= pkg.version %> - ',
@@ -57,16 +57,17 @@ module.exports = function(grunt) {
         dest: 'dist/keydrown.js'
       }
     },
-    dox: {
-      options: {
-        title: 'Keydrown'
-      },
-      files: {
-        src: [
-          'src/kd.key.js',
-          'src/kd.core.js'
-        ],
-        dest: 'dist/doc'
+    yuidoc: {
+      compile: {
+        name: 'Keydrown',
+        description: '<%= pkg.description %>',
+        version: '<%= pkg.version %>',
+        url: '<%= pkg.homepage %>',
+        options: {
+          paths: ['dist'],
+          recurse: false,
+          outdir: 'dist/doc'
+        }
       }
     },
     bump: {
@@ -83,6 +84,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint', 'qunit']);
   grunt.registerTask('build',
-    ['concat:standard', 'uglify:standard' , 'dox']);
+    ['concat:standard', 'uglify:standard' , 'yuidoc']);
 
 };

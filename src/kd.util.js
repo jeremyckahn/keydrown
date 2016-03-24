@@ -76,11 +76,13 @@ var util = (function () {
 
 
   /**
-   * Remove a value from an array.  Assumes there is only one instance of the value present in the array.
+   * Remove a value from an array.  Assumes there is only one instance of the
+   * value present in the array.
    *
    * @param {Array} arr
    * @param {*} val
-   * @return {*} The value that was removed from arr.  Returns undefined if nothing was removed.
+   * @return {*} The value that was removed from arr.  Returns undefined if
+   * nothing was removed.
    */
   util.removeValue = function (arr, val) {
     var index = indexOf(arr, val);
@@ -92,7 +94,8 @@ var util = (function () {
 
 
   /**
-   * Cross-browser function for listening for and handling an event on the document element.
+   * Cross-browser function for listening for and handling an event on the
+   * document element.
    *
    * @param {string} eventName
    * @param {function} handler
@@ -107,7 +110,8 @@ var util = (function () {
 
 
   /**
-   * Shim for requestAnimationFrame.  See: http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+   * Shim for requestAnimationFrame.  See:
+   * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
    */
   util.requestAnimationFrame = (function () {
     return window.requestAnimationFrame  ||

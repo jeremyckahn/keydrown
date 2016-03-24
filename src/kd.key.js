@@ -8,10 +8,15 @@ var Key = (function () {
   'use strict';
 
   /**
-   * Represents a key on the keyboard.  You'll never actually call this method directly; Key Objects for every key that Keydrown supports are created for you when the library is initialized (as in, when the file is loaded).  You will, however, use the `prototype` methods below to bind functions to key states.
+   * Represents a key on the keyboard.  You'll never actually call this method
+   * directly; Key Objects for every key that Keydrown supports are created for
+   * you when the library is initialized (as in, when the file is loaded).  You
+   * will, however, use the `prototype` methods below to bind functions to key
+   * states.
    *
    * @param {number} keyCode The keyCode of the key.
    * @constructor
+   * @class kd.Key
    */
   function Key (keyCode) {
     this.keyCode = keyCode;
@@ -44,12 +49,15 @@ var Key = (function () {
 
 
   /*!
-   * Private helper function that binds or invokes a hander for `down`, `up', or `press` for a `Key`.
+   * Private helper function that binds or invokes a hander for `down`, `up',
+   * or `press` for a `Key`.
    *
    * @param {Key} key
    * @param {string} handlerName
    * @param {function=} opt_handler If omitted, the handler is invoked.
-   * @param {KeyboardEvent=} opt_evt If this function is being called by a keyboard event handler, this is the raw KeyboardEvent Object provided from the browser.
+   * @param {KeyboardEvent=} opt_evt If this function is being called by a
+   * keyboard event handler, this is the raw KeyboardEvent Object provided from
+   * the browser.
    */
   function bindOrFire (key, handlerName, opt_handler, opt_evt) {
     if (opt_handler) {
@@ -63,6 +71,7 @@ var Key = (function () {
   /**
    * Returns whether the key is currently pressed or not.
    *
+   * @method isDown
    * @return {boolean} True if the key is down, otherwise false.
    */
   Key.prototype.isDown = function () {
@@ -73,7 +82,10 @@ var Key = (function () {
   /**
    * Bind a function to be called when the key is held down.
    *
-   * @param {function=} opt_handler The function to be called when the key is held down.  If omitted, this function invokes whatever handler was previously bound.
+   * @method down
+   * @param {function=} opt_handler The function to be called when the key is
+   * held down.  If omitted, this function invokes whatever handler was
+   * previously bound.
    */
   Key.prototype.down = function (opt_handler) {
     bindOrFire(this, '_downHandler', opt_handler, this.cachedKeypressEvent);
@@ -83,8 +95,13 @@ var Key = (function () {
   /**
    * Bind a function to be called when the key is released.
    *
-   * @param {function=} opt_handler The function to be called when the key is released.  If omitted, this function invokes whatever handler was previously bound.
-   * @param {KeyboardEvent=} opt_evt If this function is being called by the keyup event handler, this is the raw KeyboardEvent Object provided from the browser.  This should generally not be provided by client code.
+   * @method up
+   * @param {function=} opt_handler The function to be called when the key is
+   * released.  If omitted, this function invokes whatever handler was
+   * previously bound.
+   * @param {KeyboardEvent=} opt_evt If this function is being called by the
+   * keyup event handler, this is the raw KeyboardEvent Object provided from
+   * the browser.  This should generally not be provided by client code.
    */
   Key.prototype.up = function (opt_handler, opt_evt) {
     bindOrFire(this, '_upHandler', opt_handler, opt_evt);
@@ -92,10 +109,16 @@ var Key = (function () {
 
 
   /**
-   * Bind a function to be called when the key is pressed.  This handler will not fire again until the key is released — it does not repeat.
+   * Bind a function to be called when the key is pressed.  This handler will
+   * not fire again until the key is released — it does not repeat.
    *
-   * @param {function=} opt_handler The function to be called once when the key is pressed.  If omitted, this function invokes whatever handler was previously bound.
-   * @param {KeyboardEvent=} opt_evt If this function is being called by the keydown event handler, this is the raw KeyboardEvent Object provided from the browser.  This should generally not be provided by client code.
+   * @method press
+   * @param {function=} opt_handler The function to be called once when the key
+   * is pressed.  If omitted, this function invokes whatever handler was
+   * previously bound.
+   * @param {KeyboardEvent=} opt_evt If this function is being called by the
+   * keydown event handler, this is the raw KeyboardEvent Object provided from
+   * the browser.  This should generally not be provided by client code.
    */
   Key.prototype.press = function (opt_handler, opt_evt) {
     this.cachedKeypressEvent = opt_evt;
@@ -104,7 +127,9 @@ var Key = (function () {
 
 
   /**
-   * Remove the handler that was bound with [`kd.Key#down`](#down).
+   * Remove the handler that was bound with `{{#crossLink
+   * "kd.Key/down:method"}}{{/crossLink}}`.
+   * @method unbindDown
    */
   Key.prototype.unbindDown = function () {
     this._downHandler = util.noop;
@@ -112,7 +137,9 @@ var Key = (function () {
 
 
   /**
-   * Remove the handler that was bound with [`kd.Key#up`](#up).
+   * Remove the handler that was bound with `{{#crossLink
+   * "kd.Key/up:method"}}{{/crossLink}}`.
+   * @method unbindUp
    */
   Key.prototype.unbindUp = function () {
     this._upHandler = util.noop;
@@ -120,7 +147,9 @@ var Key = (function () {
 
 
   /**
-   * Remove the handler that was bound with [`kd.Key#press`](#press).
+   * Remove the handler that was bound with `{{#crossLink
+   * "kd.Key/press:method"}}{{/crossLink}}`.
+   * @method unbindPress
    */
   Key.prototype.unbindPress = function () {
     this._pressHandler = util.noop;

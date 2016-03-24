@@ -1,0 +1,365 @@
+{
+    "project": {
+        "name": "Keydrown",
+        "description": "A JavaScript key state handler for web apps",
+        "version": "1.2.2",
+        "url": "http://jeremyckahn.github.com/keydrown"
+    },
+    "files": {
+        "dist/keydrown.js": {
+            "name": "dist/keydrown.js",
+            "modules": {},
+            "classes": {
+                "kd.Key": 1,
+                "kd": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "kd.Key": {
+            "name": "kd.Key",
+            "shortname": "kd.Key",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dist/keydrown.js",
+            "line": 199,
+            "description": "Represents a key on the keyboard.  You'll never actually call this method\ndirectly; Key Objects for every key that Keydrown supports are created for\nyou when the library is initialized (as in, when the file is loaded).  You\nwill, however, use the `prototype` methods below to bind functions to key\nstates.",
+            "params": [
+                {
+                    "name": "keyCode",
+                    "description": "The keyCode of the key.",
+                    "type": "Number"
+                }
+            ],
+            "is_constructor": 1
+        },
+        "kd": {
+            "name": "kd",
+            "shortname": "kd",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "dist/keydrown.js",
+            "line": 355
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "dist/keydrown.js",
+            "line": 8,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "The Object to iterate through.",
+                    "type": "Object"
+                },
+                {
+                    "name": "iterator",
+                    "description": "The function to call for each property.",
+                    "type": "Function(*, string)"
+                }
+            ],
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 23,
+            "description": "Create a transposed copy of an Object.",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 40,
+            "description": "Implementation of Array#indexOf because IE<9 doesn't support it.",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "Index of the found element or -1 if not found.",
+                "type": "Number"
+            },
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 64,
+            "description": "Push a value onto an array if it is not present in the array already.  Otherwise, this is a no-op.",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "Whether or not the value was added to the array.",
+                "type": "Boolean"
+            },
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 81,
+            "description": "Remove a value from an array.  Assumes there is only one instance of the\nvalue present in the array.",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "val",
+                    "description": "",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "The value that was removed from arr.  Returns undefined if\nnothing was removed.",
+                "type": "*"
+            },
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 99,
+            "description": "Cross-browser function for listening for and handling an event on the\ndocument element.",
+            "params": [
+                {
+                    "name": "eventName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "handler",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 115,
+            "description": "Shim for requestAnimationFrame.  See:\nhttp://paulirish.com/2011/requestanimationframe-for-smart-animating/",
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 129,
+            "description": "An empty function.  NOOP!",
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 138,
+            "description": "Lookup table of keys to keyCodes.",
+            "type": "{Object.<number>}",
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 183,
+            "description": "The transposed version of KEY_MAP.",
+            "type": "{Object.<string>}",
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 260,
+            "description": "Returns whether the key is currently pressed or not.",
+            "itemtype": "method",
+            "name": "isDown",
+            "return": {
+                "description": "True if the key is down, otherwise false.",
+                "type": "Boolean"
+            },
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 271,
+            "description": "Bind a function to be called when the key is held down.",
+            "itemtype": "method",
+            "name": "down",
+            "params": [
+                {
+                    "name": "opt_handler",
+                    "description": "The function to be called when the key is\nheld down.  If omitted, this function invokes whatever handler was\npreviously bound.",
+                    "type": "Function="
+                }
+            ],
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 284,
+            "description": "Bind a function to be called when the key is released.",
+            "itemtype": "method",
+            "name": "up",
+            "params": [
+                {
+                    "name": "opt_handler",
+                    "description": "The function to be called when the key is\nreleased.  If omitted, this function invokes whatever handler was\npreviously bound.",
+                    "type": "Function="
+                },
+                {
+                    "name": "opt_evt",
+                    "description": "If this function is being called by the\nkeyup event handler, this is the raw KeyboardEvent Object provided from\nthe browser.  This should generally not be provided by client code.",
+                    "type": "KeyboardEvent="
+                }
+            ],
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 300,
+            "description": "Bind a function to be called when the key is pressed.  This handler will\nnot fire again until the key is released — it does not repeat.",
+            "itemtype": "method",
+            "name": "press",
+            "params": [
+                {
+                    "name": "opt_handler",
+                    "description": "The function to be called once when the key\nis pressed.  If omitted, this function invokes whatever handler was\npreviously bound.",
+                    "type": "Function="
+                },
+                {
+                    "name": "opt_evt",
+                    "description": "If this function is being called by the\nkeydown event handler, this is the raw KeyboardEvent Object provided from\nthe browser.  This should generally not be provided by client code.",
+                    "type": "KeyboardEvent="
+                }
+            ],
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 318,
+            "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/down:method\"}}{{/crossLink}}`.",
+            "itemtype": "method",
+            "name": "unbindDown",
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 328,
+            "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/up:method\"}}{{/crossLink}}`.",
+            "itemtype": "method",
+            "name": "unbindUp",
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 338,
+            "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/press:method\"}}{{/crossLink}}`.",
+            "itemtype": "method",
+            "name": "unbindPress",
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 369,
+            "description": "Evaluate which keys are held down and invoke their handler functions.",
+            "itemtype": "method",
+            "name": "tick",
+            "class": "kd"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 386,
+            "description": "A basic run loop.  `handler` gets called approximately 60 times a second.",
+            "params": [
+                {
+                    "name": "handler",
+                    "description": "The callback function to call on\nevery tick.  You likely want to call [kd.tick](#method_tick) in this\nfunction.  This callback receives the time elapsed since the previous\nexecution of the callback as the first parameter, and the current time\nstamp as the second.",
+                    "type": "Function(number, number)"
+                }
+            ],
+            "itemtype": "method",
+            "name": "run",
+            "class": "kd"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 414,
+            "description": "Cancels the loop created by [run](#method_run).",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "kd"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type",
+            "line": " dist/keydrown.js:8"
+        },
+        {
+            "message": "Missing item type\nCreate a transposed copy of an Object.",
+            "line": " dist/keydrown.js:23"
+        },
+        {
+            "message": "Missing item type\nImplementation of Array#indexOf because IE<9 doesn't support it.",
+            "line": " dist/keydrown.js:40"
+        },
+        {
+            "message": "Missing item type\nPush a value onto an array if it is not present in the array already.  Otherwise, this is a no-op.",
+            "line": " dist/keydrown.js:64"
+        },
+        {
+            "message": "Missing item type\nRemove a value from an array.  Assumes there is only one instance of the\nvalue present in the array.",
+            "line": " dist/keydrown.js:81"
+        },
+        {
+            "message": "Missing item type\nCross-browser function for listening for and handling an event on the\ndocument element.",
+            "line": " dist/keydrown.js:99"
+        },
+        {
+            "message": "Missing item type\nShim for requestAnimationFrame.  See:\nhttp://paulirish.com/2011/requestanimationframe-for-smart-animating/",
+            "line": " dist/keydrown.js:115"
+        },
+        {
+            "message": "Missing item type\nAn empty function.  NOOP!",
+            "line": " dist/keydrown.js:129"
+        },
+        {
+            "message": "Missing item type\nLookup table of keys to keyCodes.",
+            "line": " dist/keydrown.js:138"
+        },
+        {
+            "message": "Missing item type\nThe transposed version of KEY_MAP.",
+            "line": " dist/keydrown.js:183"
+        }
+    ]
+}
