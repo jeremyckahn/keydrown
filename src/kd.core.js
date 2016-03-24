@@ -10,6 +10,11 @@ var kd = (function (keysDown) {
 
   var isRunning = false;
 
+  var now = Date.now
+     ? Date.now
+     : function () {return +new Date();};
+
+  var previousUpdateTime = now();
 
   /**
    * Evaluate which keys are held down and invoke their handler functions.
@@ -31,10 +36,17 @@ var kd = (function (keysDown) {
   /**
    * A basic run loop.  `handler` gets called approximately 60 times a second.
    *
-   * @param {function} handler The function to call on every tick.  You almost certainly want to call `kd.tick` in this function.
+   * @param {Function(number, number)} handler The callback function to call on
+   * every tick.  You likely want to call [kd.tick](#method_tick) in this
+   * function.  This callback receives the time elapsed since the previous
+   * execution of the callback as the first parameter, and the current time
+   * stamp as the second.
+   * @method run
    */
   kd.run = function (handler) {
     isRunning = true;
+    var currentTime = now();
+    var timeSinceLastUpdate = currentTime - previousUpdateTime;
 
     util.requestAnimationFrame.call(window, function () {
       if (!isRunning) {
@@ -42,8 +54,10 @@ var kd = (function (keysDown) {
       }
 
       kd.run(handler);
-      handler();
+      handler(timeSinceLastUpdate, currentTime);
     });
+
+    previousUpdateTime = currentTime;
   };
 
 
