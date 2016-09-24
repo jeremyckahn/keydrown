@@ -1,4 +1,4 @@
-/*! keydrown - v1.2.2 - 2016-03-23 - http://jeremyckahn.github.com/keydrown */
+/*! keydrown - v1.2.2 - 2016-09-24 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -141,7 +141,17 @@ var util = (function () {
  * @type {Object.<number>}
  */
 var KEY_MAP = {
-  'A': 65
+  '0': 48
+  ,'1': 49
+  ,'2': 50
+  ,'3': 51
+  ,'4': 52
+  ,'5': 53
+  ,'6': 54
+  ,'7': 55
+  ,'8': 56
+  ,'9': 57
+  ,'A': 65
   ,'B': 66
   ,'C': 67
   ,'D': 68
