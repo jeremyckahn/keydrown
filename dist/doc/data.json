@@ -2,7 +2,7 @@
     "project": {
         "name": "Keydrown",
         "description": "A JavaScript key state handler for web apps",
-        "version": "1.2.2",
+        "version": "1.2.3",
         "url": "http://jeremyckahn.github.com/keydrown"
     },
     "files": {

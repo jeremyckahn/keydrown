@@ -1,4 +1,4 @@
-/*! keydrown - v1.2.2 - 2016-09-24 - http://jeremyckahn.github.com/keydrown */
+/*! keydrown - v1.2.3 - 2016-09-24 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
