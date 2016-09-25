@@ -28,7 +28,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "dist/keydrown.js",
-            "line": 199,
+            "line": 209,
             "description": "Represents a key on the keyboard.  You'll never actually call this method\ndirectly; Key Objects for every key that Keydrown supports are created for\nyou when the library is initialized (as in, when the file is loaded).  You\nwill, however, use the `prototype` methods below to bind functions to key\nstates.",
             "params": [
                 {
@@ -48,7 +48,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "dist/keydrown.js",
-            "line": 355
+            "line": 365
         }
     },
     "elements": {},
@@ -192,14 +192,14 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 183,
+            "line": 193,
             "description": "The transposed version of KEY_MAP.",
             "type": "{Object.<string>}",
             "class": "kd.Key"
         },
         {
             "file": "dist/keydrown.js",
-            "line": 260,
+            "line": 270,
             "description": "Returns whether the key is currently pressed or not.",
             "itemtype": "method",
             "name": "isDown",
@@ -211,7 +211,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 271,
+            "line": 281,
             "description": "Bind a function to be called when the key is held down.",
             "itemtype": "method",
             "name": "down",
@@ -226,7 +226,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 284,
+            "line": 294,
             "description": "Bind a function to be called when the key is released.",
             "itemtype": "method",
             "name": "up",
@@ -246,7 +246,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 300,
+            "line": 310,
             "description": "Bind a function to be called when the key is pressed.  This handler will\nnot fire again until the key is released — it does not repeat.",
             "itemtype": "method",
             "name": "press",
@@ -266,7 +266,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 318,
+            "line": 328,
             "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/down:method\"}}{{/crossLink}}`.",
             "itemtype": "method",
             "name": "unbindDown",
@@ -274,7 +274,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 328,
+            "line": 338,
             "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/up:method\"}}{{/crossLink}}`.",
             "itemtype": "method",
             "name": "unbindUp",
@@ -282,7 +282,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 338,
+            "line": 348,
             "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/press:method\"}}{{/crossLink}}`.",
             "itemtype": "method",
             "name": "unbindPress",
@@ -290,7 +290,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 369,
+            "line": 379,
             "description": "Evaluate which keys are held down and invoke their handler functions.",
             "itemtype": "method",
             "name": "tick",
@@ -298,7 +298,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 386,
+            "line": 396,
             "description": "A basic run loop.  `handler` gets called approximately 60 times a second.",
             "params": [
                 {
@@ -313,7 +313,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 414,
+            "line": 424,
             "description": "Cancels the loop created by [run](#method_run).",
             "itemtype": "method",
             "name": "stop",
@@ -359,7 +359,7 @@
         },
         {
             "message": "Missing item type\nThe transposed version of KEY_MAP.",
-            "line": " dist/keydrown.js:183"
+            "line": " dist/keydrown.js:193"
         }
     ]
 }
