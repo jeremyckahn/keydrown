@@ -50,6 +50,8 @@ var KEY_MAP = {
   ,'DOWN': 40
   ,'BACKSPACE': 8
   ,'DELETE': 46
+  ,'TAB': 9
+  ,'TILDE': 192
 };
 
 
