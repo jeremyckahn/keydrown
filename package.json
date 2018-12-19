@@ -13,7 +13,7 @@
   "scripts": {
     "build": "grunt build",
     "lint": "grunt jshint",
-    "preversion": "npm run lint && npm run build",
+    "preversion": "npm run lint && npm run build && git add -A dist",
     "postversion": "git push && git push --tags && npm publish"
   },
   "license": "MIT",
