@@ -7,7 +7,8 @@
   "description": "A JavaScript key state handler for web apps",
   "contributors": [
     "Andre Z. Sanchez <andrezacsanchez@gmail.com> (http://andrezs.com)",
-    "Gabriel Lopez <jepunto@gmail.com>"
+    "Gabriel Lopez <jepunto@gmail.com>",
+    "Kev Zettler"
   ],
   "license": "MIT",
   "keywords": [
