@@ -10,6 +10,10 @@
     "Gabriel Lopez <jepunto@gmail.com>",
     "Kev Zettler"
   ],
+  "scripts": {
+    "build": "grunt build",
+    "lint": "grunt jshint"
+  },
   "license": "MIT",
   "keywords": [
     "JavaScript",
