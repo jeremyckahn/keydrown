@@ -30,7 +30,6 @@
     "grunt-bump": "^0.8.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jshint": "^2.0.0",
-    "grunt-contrib-qunit": "^3.0.1",
     "grunt-contrib-uglify": "^4.0.0",
     "grunt-contrib-yuidoc": "^1.0.0"
   }
