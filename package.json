@@ -12,7 +12,9 @@
   ],
   "scripts": {
     "build": "grunt build",
-    "lint": "grunt jshint"
+    "lint": "grunt jshint",
+    "preversion": "npm run lint && npm run build",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "license": "MIT",
   "keywords": [
@@ -27,7 +29,6 @@
   },
   "devDependencies": {
     "grunt": "^1.0.3",
-    "grunt-bump": "^0.8.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jshint": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.0",

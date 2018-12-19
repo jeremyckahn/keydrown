@@ -5,7 +5,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
   var banner = [
@@ -64,16 +63,6 @@ module.exports = function(grunt) {
           recurse: false,
           outdir: 'dist/doc'
         }
-      }
-    },
-    bump: {
-      options: {
-        files: ['package.json'],
-        commit: false,
-        createTag: false,
-        tagName: '%VERSION%',
-        tagMessage: 'Version %VERSION%',
-        push: false
       }
     }
   });
