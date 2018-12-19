@@ -231,17 +231,26 @@ kd.ESC.down(function () {
 
 If you want to keep things simple, all you need is either `dist/keydrown.js` or
 `dist/keydrown.min.js` from this Git repo.  Alternatively, you can install
-Keydrown via [Bower](http://bower.io/):
+Keydrown via NPM:
 
 ````
-$: bower install keydrown
+$: npm install keydrown
 ````
 
 ### Module compatibility
 
 If loaded directly (without a script loader), Keydrown creates the `kd` browser
 global.  However, it can also be loaded as an AMD module or as a CommonJS
-module (through a tool like [Browserify](http://browserify.org/)).
+module (through a tool like [Webpack](https://webpack.js.org/)).
+
+````javascript
+// Loaded as a CommonJS module with Webpack
+var kd = require('keydrown');
+
+kd.run(function () {
+  kd.tick();
+});
+````
 
 ````javascript
 // Loaded with an AMD loader (such as Require.js)
@@ -249,15 +258,6 @@ require(['./path/to/keydrown'], function (kd) {
   kd.run(function () {
     kd.tick();
   });
-});
-````
-
-````javascript
-// Loaded as a CommonJS module, after running it through Browserify or similar
-var kd = require('./path/to/keydrown');
-
-kd.run(function () {
-  kd.tick();
 });
 ````
 
