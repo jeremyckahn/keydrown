@@ -1,4 +1,4 @@
-/*! keydrown - v1.2.7 - 2018-12-19 - http://jeremyckahn.github.com/keydrown */
+/*! keydrown - v1.2.8 - 2020-10-01 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -188,7 +188,8 @@ var KEY_MAP = {
   'BACKSPACE': 8,
   'DELETE': 46,
   'TAB': 9,
-  'TILDE': 192
+  'TILDE': 192,
+  'CTRL': 17,
 };
 
 
