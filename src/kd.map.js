@@ -51,7 +51,8 @@ var KEY_MAP = {
   'BACKSPACE': 8,
   'DELETE': 46,
   'TAB': 9,
-  'TILDE': 192
+  'TILDE': 192,
+  'CTRL': 17,
 };
 
 
