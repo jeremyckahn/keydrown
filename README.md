@@ -285,6 +285,7 @@ Keydrown has been used in several interesting projects:
 * [PeepsQuest, a game development tutorial](http://peepsquest.com/tutorials/isometric-placing-avatar.html)
 * [A role playing game](https://github.com/quintenpalmer/attempt)
 * [A WebRTC controlled car](https://github.com/PosMich/WC-Car)
+* [A Javascript Port of Super Mario 64](https://github.com/sm64js/sm64js)
 
 ### License
 
