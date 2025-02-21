@@ -48,7 +48,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "dist/keydrown.js",
-            "line": 368
+            "line": 389
         }
     },
     "elements": {},
@@ -212,6 +212,18 @@
         {
             "file": "dist/keydrown.js",
             "line": 284,
+            "description": "Returns whether the key was just pressed.",
+            "itemtype": "method",
+            "name": "justPressed",
+            "return": {
+                "description": "True if the key was just pressed, otherwise false.",
+                "type": "Boolean"
+            },
+            "class": "kd.Key"
+        },
+        {
+            "file": "dist/keydrown.js",
+            "line": 305,
             "description": "Bind a function to be called when the key is held down.",
             "itemtype": "method",
             "name": "down",
@@ -226,7 +238,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 297,
+            "line": 318,
             "description": "Bind a function to be called when the key is released.",
             "itemtype": "method",
             "name": "up",
@@ -246,7 +258,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 313,
+            "line": 334,
             "description": "Bind a function to be called when the key is pressed.  This handler will\nnot fire again until the key is released — it does not repeat.",
             "itemtype": "method",
             "name": "press",
@@ -266,7 +278,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 331,
+            "line": 352,
             "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/down:method\"}}{{/crossLink}}`.",
             "itemtype": "method",
             "name": "unbindDown",
@@ -274,7 +286,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 341,
+            "line": 362,
             "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/up:method\"}}{{/crossLink}}`.",
             "itemtype": "method",
             "name": "unbindUp",
@@ -282,7 +294,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 351,
+            "line": 372,
             "description": "Remove the handler that was bound with `{{#crossLink\n\"kd.Key/press:method\"}}{{/crossLink}}`.",
             "itemtype": "method",
             "name": "unbindPress",
@@ -290,7 +302,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 382,
+            "line": 403,
             "description": "Evaluate which keys are held down and invoke their handler functions.",
             "itemtype": "method",
             "name": "tick",
@@ -298,7 +310,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 399,
+            "line": 420,
             "description": "A basic run loop.  `handler` gets called approximately 60 times a second.",
             "params": [
                 {
@@ -313,7 +325,7 @@
         },
         {
             "file": "dist/keydrown.js",
-            "line": 427,
+            "line": 448,
             "description": "Cancels the loop created by [run](#method_run).",
             "itemtype": "method",
             "name": "stop",

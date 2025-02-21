@@ -80,6 +80,27 @@ var Key = (function () {
 
 
   /**
+   * Returns whether the key was just pressed.
+   *
+   * @method justPressed
+   * @return {boolean} True if the key was just pressed, otherwise false.
+   */
+  Key.prototype.justPressed = function () {
+    if(util.indexOf(keysDown, this.keyCode) !== -1){
+      if(this.pressed){
+        return false
+      }
+      this.pressed = true
+      return true
+    }
+    this.pressed = false
+    return false
+    
+    // return util.indexOf(keysDown, this.keyCode) !== -1;
+  };
+
+
+  /**
    * Bind a function to be called when the key is held down.
    *
    * @method down

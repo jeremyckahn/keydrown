@@ -286,6 +286,7 @@ Keydrown has been used in several interesting projects:
 * [A role playing game](https://github.com/quintenpalmer/attempt)
 * [A WebRTC controlled car](https://github.com/PosMich/WC-Car)
 * [A Javascript Port of Super Mario 64](https://github.com/sm64js/sm64js)
+* [A Game Engine](https://github.com/loglot/Yet-Another-Game-Engine)
 
 ### License
 

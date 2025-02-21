@@ -1,4 +1,4 @@
-/*! keydrown - v1.2.8 - 2020-10-01 - http://jeremyckahn.github.com/keydrown */
+/*! keydrown - v1.2.8 - 2025-02-20 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -278,6 +278,27 @@ var Key = (function () {
    */
   Key.prototype.isDown = function () {
     return util.indexOf(keysDown, this.keyCode) !== -1;
+  };
+
+
+  /**
+   * Returns whether the key was just pressed.
+   *
+   * @method justPressed
+   * @return {boolean} True if the key was just pressed, otherwise false.
+   */
+  Key.prototype.justPressed = function () {
+    if(util.indexOf(keysDown, this.keyCode) !== -1){
+      if(Key.pressed){
+        return false
+      }
+      Key.pressed = true
+      return true
+    }
+    Key.pressed = false
+    return false
+    
+    // return util.indexOf(keysDown, this.keyCode) !== -1;
   };
 
 
