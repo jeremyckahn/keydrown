@@ -21,7 +21,7 @@ var Key = (function () {
   function Key (keyCode) {
     this.keyCode = keyCode;
     this.cachedKeypressEvent = null;
-    this._wasDownPreviousTick = false
+    this._wasDownPreviousTick = false;
   }
 
 
@@ -92,17 +92,17 @@ var Key = (function () {
   Key.prototype.wasDownPreviousTick = function () {
     if (util.indexOf(keysDown, this.keyCode) !== -1) {
       if (this._wasDownPreviousTick) {
-        return false
+        return false;
       }
 
-      this._wasDownPreviousTick = true
+      this._wasDownPreviousTick = true;
 
-      return true
+      return true;
     }
 
-    this._wasDownPreviousTick = false
+    this._wasDownPreviousTick = false;
 
-    return false
+    return false;
   };
 
 
