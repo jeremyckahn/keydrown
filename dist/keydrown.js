@@ -1,4 +1,4 @@
-/*! keydrown - v1.2.8 - 2020-10-01 - http://jeremyckahn.github.com/keydrown */
+/*! keydrown - v1.2.8 - 2025-02-21 - http://jeremyckahn.github.com/keydrown */
 ;(function (window) {
 
 var util = (function () {
@@ -223,6 +223,7 @@ var Key = (function () {
   function Key (keyCode) {
     this.keyCode = keyCode;
     this.cachedKeypressEvent = null;
+    this._wasDownPreviousTick = false
   }
 
 
@@ -278,6 +279,32 @@ var Key = (function () {
    */
   Key.prototype.isDown = function () {
     return util.indexOf(keysDown, this.keyCode) !== -1;
+  };
+
+
+  /**
+   * Returns whether the key was pressed in the previous frame (tick). This can
+   * be useful as an alternative to `{{#crossLink
+   * "kd.Key/press:method"}}{{/crossLink}}` (which effectively does the same
+   * thing) within event handlers.
+   *
+   * @method wasDownPreviousTick
+   * @return {boolean} True if the key was just pressed, otherwise false.
+   */
+  Key.prototype.wasDownPreviousTick = function () {
+    if (util.indexOf(keysDown, this.keyCode) !== -1) {
+      if (this._wasDownPreviousTick) {
+        return false
+      }
+
+      this._wasDownPreviousTick = true
+
+      return true
+    }
+
+    this._wasDownPreviousTick = false
+
+    return false
   };
 
 

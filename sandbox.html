@@ -37,6 +37,16 @@
     kd.run(function () {
       kd.tick();
     });
+
+    kd.run(function () {
+      if (kd.P.wasDownPreviousTick()) {
+        log('The P key was pressed!');
+
+      }
+      if (kd.D.wasDownPreviousTick()) {
+        log('The D key was pressed!');
+      }
+    })
   </script>
 </body>
 </html>
