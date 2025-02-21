@@ -37,18 +37,16 @@
     kd.run(function () {
       kd.tick();
     });
-    function tick(){
-      if(kd.P.justPressed()){
+
+    kd.run(function () {
+      if (kd.P.wasDownPreviousTick()) {
         log('The P key was pressed!');
 
       }
-      if(kd.D.justPressed()){
+      if (kd.D.wasDownPreviousTick()) {
         log('The D key was pressed!');
-
       }
-      requestAnimationFrame(tick)
-    }
-    requestAnimationFrame(tick)
+    })
   </script>
 </body>
 </html>
