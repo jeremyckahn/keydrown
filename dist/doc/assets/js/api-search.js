@@ -36,7 +36,9 @@ Y.APISearch = Y.Base.create('apiSearch', Y.Base, [Y.AutoCompleteBase], {
                 desc = raw.description || '';
 
             // Convert description to text and truncate it if necessary.
-            desc = Node.create('<div>' + desc + '</div>').get('text');
+            // Escape the raw description before handing it to Node.create()
+            // so that untrusted HTML is never parsed into live DOM nodes.
+            desc = Node.create('<div>' + Y.Escape.html(desc) + '</div>').get('text');
 
             if (desc.length > 65) {
                 desc = Y.Escape.html(desc.substr(0, 65)) + ' &hellip;';
